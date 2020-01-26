@@ -96,6 +96,8 @@ volatile int32_t Current_mkA ;
 volatile int32_t Current_mA ;
 volatile int32_t Current;
 volatile uint8_t resistor01;
+
+volatile int32_t CurrentTimer;
 #define MAX_LOG_ITEMS 24
 
 struct StructLoggingData

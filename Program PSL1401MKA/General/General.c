@@ -172,7 +172,7 @@ volatile int32_t Current_mkA = 0;
 volatile int32_t Current_mA = 0;
 volatile int32_t Current = 0;
 volatile uint8_t resistor01 = 1;
-
+volatile int32_t CurrentTimer = 0;
 
 void WriteInLOG(char  str [17])
 {

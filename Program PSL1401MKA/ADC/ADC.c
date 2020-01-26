@@ -18,11 +18,10 @@ volatile uint16_t U_12V = 0;
 volatile uint16_t U_5V_1Wire = 0;
 volatile uint16_t U_5V = 0;
 
-volatile int32_t CurrentTimer = 0;
+
 volatile int32_t OffTimer = 0;
 volatile uint8_t HighCurrentStatus = 0;
-
-
+uint8_t EnterToSwitch = 0;
 
 
 #define TIM3_PERIOD 5
@@ -133,34 +132,46 @@ void TIM3_IRQHandler()
 		U_IN = middle_of_3Umax(Ut);
 		Ut = (RegularConvData[1] * CalibrationData.CalibrationForCurrent_mA1*10) / RegularConvData[6] ;//  Current A/10
 
-		Current_mA=1000*middle_of_3_ImA(Ut);
+		Current_mA=1000*Ut;
 
 		Ut= (RegularConvData[0] * CalibrationData.CalibrationForCurrent_mkA1*100) / RegularConvData[6] ;//  Current A/10
-		Current_mkA = middle_of_3_ImkA(Ut);
+		Current_mkA = Ut;
 
-		if (resistor01 == 1)
+
+
+		if ((resistor01 == 1)&&(CurrentTimer>100) )
 		{
 			//GPIOB->BSRR =  GPIO_BSRR_BR0;
-			Current_1of3 = MedianFilter2(Current_mA);
-			Current = Current_mA;
+			Current = MedianFilter1(Current_mA);
+			Current_1of3 = Current_mA;
+
 		}
-		if (resistor01 == 0)
+		if ((resistor01 == 0)&&(CurrentTimer>100) )
 		{
 			//GPIOB->BSRR =  GPIO_BSRR_BS0;
-			Current_1of3 = MedianFilter1(Current_mkA);
-			Current = Current_mkA;
+			Current = MedianFilter1(Current_mkA);
+			Current_1of3 =  Current_mkA;
+
 		}
+
+
 
 
 		if (Current_1of3>8500)
 		{
 			GPIOB->BSRR =  GPIO_BSRR_BS0;
 			resistor01 = 1;
+			if (EnterToSwitch == 2)
+				CurrentTimer = 0;
+			EnterToSwitch = 1;
 		}
-		if (Current_1of3<7000)
+		if (Current_1of3<5000)
 		{
 			GPIOB->BSRR =  GPIO_BSRR_BR0;
 			resistor01 = 0;
+			if(EnterToSwitch == 1)
+				CurrentTimer = 0;
+			EnterToSwitch = 2;
 		}
 
 		//if ( (GPIOA->IDR & 112) == 0 )

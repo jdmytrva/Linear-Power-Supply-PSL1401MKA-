@@ -1177,6 +1177,7 @@ int main(void)
     	Print_to_USART1_d(Current_mkA,"mkA:",0);
 		Print_to_USART1_d(RegularConvData[0],"mkAr:",0);
     	Print_to_USART1_d(Current,"Curent:",0);
+    	Print_to_USART1_d(CurrentTimer,"CurentTimer:",0);
     	Print_to_USART1_d(resistor01,"res:",0);
 
 		switch (Button)
