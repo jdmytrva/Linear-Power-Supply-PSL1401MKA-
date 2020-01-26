@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=BMS.map -Os --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\BMS -TC:\CooCox\CoIDE\configuration\ProgramData\BMS/arm-gcc-link.ld -g">
+      <target file="BMS.elf" lastModified="16fe1921ab8">
+         <source file="..\obj\MicroMenu2_1.o" lastModified="16fe191fac9"/>
+         <source file="..\obj\stm32f10x_tim.o" lastModified="16fe191fd46"/>
+         <source file="..\obj\startup_stm32f10x_ld_vl.o" lastModified="16fe191fe22"/>
+         <source file="..\obj\General.o" lastModified="16fe191ff5e"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="16fe1920042"/>
+         <source file="..\obj\hd44780_driver.o" lastModified="16fe192015c"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="16fe1920271"/>
+         <source file="..\obj\main.o" lastModified="16fe19205a5"/>
+         <source file="..\obj\ADC.o" lastModified="16fe19206e0"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="16fe19207d2"/>
+         <source file="..\obj\Init_.o" lastModified="16fe19208a0"/>
+         <source file="..\obj\stm32f10x_adc.o" lastModified="16fe19209ad"/>
+         <source file="..\obj\stm32f10x_usart.o" lastModified="16fe1920aca"/>
+         <source file="..\obj\Lib.o" lastModified="16fe1920c64"/>
+         <source file="..\obj\stm32f10x_dma.o" lastModified="16fe1920d33"/>
+         <source file="..\obj\misc.o" lastModified="16fe1920deb"/>
+         <source file="..\obj\Eeprom.o" lastModified="16fe1921589"/>
+         <source file="..\obj\usart.o" lastModified="16fe19216b7"/>
+      </target>
+   </processor>
+</history>

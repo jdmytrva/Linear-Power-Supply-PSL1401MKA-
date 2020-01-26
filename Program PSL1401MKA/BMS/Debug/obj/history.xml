@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m3 -mthumb -Wall -ffunction-sections -g -Os -c -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -DSTM32F100C8 -DSTM32F10X_MD_VL -ID:\Dropbox\Projects\RadioElectronics\Linear Power Supply (PSL1401MKA)\Program PSL1401MKA 100\stm_lib\inc -ID:\Dropbox\Projects\RadioElectronics\Linear Power Supply (PSL1401MKA)\Program PSL1401MKA 100\cmsis -ID:\Dropbox\Projects\RadioElectronics\Linear Power Supply (PSL1401MKA)\Program PSL1401MKA 100\ADC -ID:\Dropbox\Projects\RadioElectronics\Linear Power Supply (PSL1401MKA)\Program PSL1401MKA 100\Eeprom -ID:\Dropbox\Projects\RadioElectronics\Linear Power Supply (PSL1401MKA)\Program PSL1401MKA 100\General -ID:\Dropbox\Projects\RadioElectronics\Linear Power Supply (PSL1401MKA)\Program PSL1401MKA 100\USART -ID:\Dropbox\Projects\RadioElectronics\Linear Power Supply (PSL1401MKA) -ID:\Dropbox\Projects\RadioElectronics\Linear Power Supply (PSL1401MKA)\Program PSL1401MKA 100\Menu -ID:\Dropbox\Projects\RadioElectronics\Linear Power Supply (PSL1401MKA)\Program PSL1401MKA 100\Library -ID:\Dropbox\Projects\RadioElectronics\Linear Power Supply (PSL1401MKA)\Program PSL1401MKA 100 -ID:\Dropbox\Projects\RadioElectronics\Linear Power Supply (PSL1401MKA)\Program PSL1401MKA 100\Initialization -ID:\Dropbox\Projects\RadioElectronics\Linear Power Supply (PSL1401MKA)\Program PSL1401MKA 100\hd44780_driver -ID:\Dropbox\Projects\RadioElectronics\Linear Power Supply (PSL1401MKA)\Program PSL1401MKA 100\stm_lib -ID:\Dropbox\Projects\RadioElectronics\Linear Power Supply (PSL1401MKA)\Program PSL1401MKA 100\cmsis_boot">
+      <target file="Lib.o" lastModified="16fe1920c64">
+         <source file="..\..\..\Library\Lib.c" lastModified="16ebbb0cae6"/>
+      </target>
+      <target file="stm32f10x_rcc.o" lastModified="16fe19207d2">
+         <source file="..\..\..\stm_lib\src\stm32f10x_rcc.c" lastModified="16ebbb0cb47"/>
+      </target>
+      <target file="misc.o" lastModified="16fe1920deb">
+         <source file="..\..\..\stm_lib\src\misc.c" lastModified="16ebbb0cb3e"/>
+      </target>
+      <target file="hd44780_driver.o" lastModified="16fe192015c">
+         <source file="..\..\..\hd44780_driver\hd44780_driver.c" lastModified="16ebbb0cb1f"/>
+      </target>
+      <target file="startup_stm32f10x_ld_vl.o" lastModified="16fe191fe22">
+         <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_ld_vl.c" lastModified="16ebbb0caff"/>
+      </target>
+      <target file="ADC.o" lastModified="16fe19206e0">
+         <source file="..\..\..\ADC\ADC.c" lastModified="16fe16339e8"/>
+      </target>
+      <target file="Eeprom.o" lastModified="16fe1921589">
+         <source file="..\..\..\Eeprom\Eeprom.c" lastModified="16fde450448"/>
+      </target>
+      <target file="General.o" lastModified="16fe191ff5e">
+         <source file="..\..\..\General\General.c" lastModified="16fde5c73ec"/>
+      </target>
+      <target file="MicroMenu2_1.o" lastModified="16fe191fac9">
+         <source file="..\..\..\Menu\MicroMenu2_1.c" lastModified="16ebbb0caeb"/>
+      </target>
+      <target file="stm32f10x_gpio.o" lastModified="16fe1920271">
+         <source file="..\..\..\stm_lib\src\stm32f10x_gpio.c" lastModified="16ebbb0cb47"/>
+      </target>
+      <target file="Init_.o" lastModified="16fe19208a0">
+         <source file="..\..\..\Initialization\Init_.c" lastModified="16fde226402"/>
+      </target>
+      <target file="system_stm32f10x.o" lastModified="16fe1920042">
+         <source file="..\..\..\cmsis_boot\system_stm32f10x.c" lastModified="16ebbb0cb0f"/>
+      </target>
+      <target file="stm32f10x_tim.o" lastModified="16fe191fd46">
+         <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="16ebbb0cb47"/>
+      </target>
+      <target file="stm32f10x_adc.o" lastModified="16fe19209ad">
+         <source file="..\..\..\stm_lib\src\stm32f10x_adc.c" lastModified="16ebbb0cb3e"/>
+      </target>
+      <target file="usart.o" lastModified="16fe19216b7">
+         <source file="..\..\..\USART\usart.c" lastModified="16ebbb0caf5"/>
+      </target>
+      <target file="stm32f10x_dma.o" lastModified="16fe1920d33">
+         <source file="..\..\..\stm_lib\src\stm32f10x_dma.c" lastModified="16ebbb0cb47"/>
+      </target>
+      <target file="stm32f10x_usart.o" lastModified="16fe1920aca">
+         <source file="..\..\..\stm_lib\src\stm32f10x_usart.c" lastModified="16ebbb0cb47"/>
+      </target>
+      <target file="main.o" lastModified="16fe19205a5">
+         <source file="..\..\..\main.c" lastModified="16fe191e8c8"/>
+      </target>
+   </processor>
+</history>
