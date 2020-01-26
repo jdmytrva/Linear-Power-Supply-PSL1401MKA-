@@ -5,8 +5,8 @@
 #define NULL         0
 #define STOPPER   0 /* Smaller than any datum */
 #define MEDIAN_FILTER_SIZE 21 //Voltage
-#define MEDIAN_FILTER_SIZE1 11 //Current
-#define MEDIAN_FILTER_SIZE2 11 //Current MEDIAN_FILTER_SIZE1  = MEDIAN_FILTER_SIZE2 !!! it musts
+#define MEDIAN_FILTER_SIZE1 21 //Current
+#define MEDIAN_FILTER_SIZE2 21 //Current MEDIAN_FILTER_SIZE1  = MEDIAN_FILTER_SIZE2 !!! it musts
 
 #define NUMBER_OF_CHANNELS 8
 __IO uint16_t RegularConvData[NUMBER_OF_CHANNELS] ;

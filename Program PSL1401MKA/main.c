@@ -125,59 +125,99 @@ void Generic_Write(char* Text)
 void MenuPowerSupply(Key_Pressed_t key) //PowerSupply
 {
 	EnterInMenu_Status = 1;
-	lcd_set_xy(0,0);
-	PrintToLCD(itoa_koma(U_PS,2));
-	PrintToLCD("V ");
-	lcd_set_xy(7,0);
 
-	if (On_off == 1)
+	#define MAXITEM3 3
+
+	if (key == KEY_BACK)
 	{
-		if (Current < 10000)
+		CountShow--;
+		if (CountShow<0) CountShow=MAXITEM3-1;
+	}
+
+	if(CountShow == 0)
+	{
+		if (key == KEY_NEXT)
+		{
+			if (On_off == 0)
+				OUT_ON();
+			else
+				OUT_OFF();
+		}
+		lcd_set_xy(0,0);
+		PrintToLCD(itoa_koma(U_PS,2));
+		PrintToLCD("V  ");
+		lcd_set_xy(7,0);
+
+
+
+		if (On_off == 1)
+		{
+			if (Current < 10000)
+			{
+				PrintToLCD(itoa(Current));
+				//lcd_set_xy(5,1);
+				PrintToLCD("mkA    ");
+			}
+
+			if (Current >= 10000)
+			{
+				PrintToLCD(itoa(Current/1000));
+				//lcd_set_xy(5,1);
+				PrintToLCD("mA    ");
+			}
+		}
+		else
 		{
 			PrintToLCD(itoa(Current));
-			//lcd_set_xy(5,1);
-			PrintToLCD("mkA    ");
+			//lcd_set_xy(4,1);
+			PrintToLCD("mkA     ");
 		}
 
-		if (Current >= 10000)
-		{
-			PrintToLCD(itoa(Current/1000));
-			//lcd_set_xy(5,1);
-			PrintToLCD("mA    ");
-		}
-	}
-	else
-	{
-		PrintToLCD(itoa(Current));
-		//lcd_set_xy(4,1);
-		PrintToLCD("mkA     ");
-	}
 
-    if (key == KEY_NEXT)
-    {
-    	if (On_off == 0)
-    		OUT_ON();
-    	else
-    		OUT_OFF();
-    }
-	if (On_off ==0)
-	{
-		lcd_set_xy(7,1);
-		LcdOutbyNumber(0,1);
-	}
-	else
-		if (Blink_message_counter<=5)
+		if (On_off ==0)
 		{
 			lcd_set_xy(7,1);
 			LcdOutbyNumber(0,1);
 		}
 		else
-		{
+			if (Blink_message_counter<=5)
+			{
 				lcd_set_xy(7,1);
-				LcdOutbyNumber(1,1);
+				LcdOutbyNumber(0,1);
+			}
+			else
+			{
+					lcd_set_xy(7,1);
+					LcdOutbyNumber(1,1);
+			}
+		if (Blink_message_counter>10)
+			Blink_message_counter = 0;
+	}
+
+	if(CountShow == 1)
+	{
+		if (key == KEY_NEXT)
+		{
+			CurrentCapacity = 0;
 		}
-	if (Blink_message_counter>10)
-		Blink_message_counter = 0;
+		lcd_set_xy(0,0);
+		PrintToLCD("5ms ");
+		PrintToLCD(itoa(CurrentCapacity/3600));
+		PrintToLCD("mkA/h              ");
+	}
+	if(CountShow == 2)
+	{
+		if (key == KEY_NEXT)
+		{
+			BatteryCapacityDischargeCurrent = 0;
+		}
+
+		lcd_set_xy(0,0);
+		PrintToLCD("1s ");
+		PrintToLCD(itoa(BatteryCapacityDischargeCurrent/3600));
+		PrintToLCD("mkA/h                ");
+	}
+
 }
 
 void MenuLoad(Key_Pressed_t key) //Load
@@ -327,7 +367,7 @@ void MenuDIAGNOSTIC(Key_Pressed_t key)
 
 		OUT_ON();
 		lcd_set_xy(0,0);
-		PrintToLCD("I(mA) ");
+		PrintToLCD("I ");
 		PrintToLCD(itoa(Current_mA));
 		PrintToLCD("mA ");
 		PrintToLCD(itoa((RegularConvData[1])));
@@ -337,7 +377,7 @@ void MenuDIAGNOSTIC(Key_Pressed_t key)
 	{
 		OUT_ON();
 		lcd_set_xy(0,0);
-		PrintToLCD("I(mkA) ");
+		PrintToLCD("I ");
 		PrintToLCD(itoa(Current_mkA));
 		PrintToLCD("mkA ");
 		PrintToLCD(itoa(RegularConvData[0]));
@@ -892,10 +932,8 @@ void TIM1_UP_TIM16_IRQHandler()
 
 
 	//capacity
-	if (Current < 2)
-		BatteryCapacityDischargeCurrent = BatteryCapacityDischargeCurrent + Module16(Current);
-	if (Current > 2)
-		BatteryCapacityCharge = BatteryCapacityCharge + Module16(Current);
+
+	BatteryCapacityDischargeCurrent = BatteryCapacityDischargeCurrent  + Current;
 	if (ChargeStatusForTimer == 1)
 		ChargeTimeSec++;
 	if (DisChargeStatusForTimer == 1)
@@ -1117,7 +1155,7 @@ int main(void)
 {
 	Initialization();
 	OFF();
-	//GPIOB->BSRR =  GPIO_BSRR_BS0;
+	GPIOB->BSRR =  GPIO_BSRR_BR0;
 	LoggingData.RecordsQuantity= 0;
 	uint8_t EEpromReadStatus;
 	PrintToLCD(Version);
@@ -1179,6 +1217,8 @@ int main(void)
     	Print_to_USART1_d(Current,"Curent:",0);
     	Print_to_USART1_d(CurrentTimer,"CurentTimer:",0);
     	Print_to_USART1_d(resistor01,"res:",0);
+    	Print_to_USART1_d(CurrentCapacity,"CurrenrCap:",0);
+    	Print_to_USART1_d(BatteryCapacityDischargeCurrent,"CurrenrCapBat:",0);
 
 		switch (Button)
 		{
@@ -1267,6 +1307,8 @@ int main(void)
 			OFF();
 			InitiStatus = 0;
 			CountShow = 0;
+			BatteryCapacityDischargeCurrent = 0;
+			CurrentCapacity = 0;
 			SaveDataWhenPowerOff.BatteryCapacityDischargePreviousValue = BatteryCapacityDischargeCurrent;
 			//Print_to_USART1_d(SaveDataWhenPowerOff.BatteryCapacityDischargePreviousValue,"Menu C maH : ",0);
 

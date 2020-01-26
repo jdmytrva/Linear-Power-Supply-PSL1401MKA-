@@ -22,7 +22,11 @@ volatile uint16_t U_5V = 0;
 volatile int32_t OffTimer = 0;
 volatile uint8_t HighCurrentStatus = 0;
 uint8_t EnterToSwitch = 0;
-
+volatile int16_t U_OUTtmp = 0;
+volatile int16_t Ut = 0;
+volatile int32_t Current_1of3=0;
+volatile int32_t I_Raw_mkA=0;
+volatile int32_t I_Raw_mA=0;
 
 #define TIM3_PERIOD 5
 #define TIME_OUT_FOR_CURRENT_SEC 5 //sec
@@ -109,10 +113,9 @@ void TIM3_IRQHandler()
   if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)
   {
 	  	CurrentTimer++;
+	  	CurrentTimerCap++;
 		TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
-		volatile int16_t U_OUTtmp = 0;
-		volatile int16_t Ut = 0;
-		volatile int32_t Current_1of3=0;
+
 
 		//a= (22+95)*1000/(1470-330);
 		//b= 22 - (a*330/1000);
@@ -130,73 +133,47 @@ void TIM3_IRQHandler()
 		if (U_OUTtmp<3) U_OUTtmp = 0;
 		Ut = (RegularConvData[4] * CalibrationData.CalibrationFor_U_PS3) / RegularConvData[6];
 		U_IN = middle_of_3Umax(Ut);
-		Ut = (RegularConvData[1] * CalibrationData.CalibrationForCurrent_mA1*10) / RegularConvData[6] ;//  Current A/10
+		I_Raw_mA = (RegularConvData[1] * CalibrationData.CalibrationForCurrent_mA1*10) / RegularConvData[6] ;//  Current A/10
 
-		Current_mA=1000*Ut;
+		Current_mA=1000*MedianFilter1(I_Raw_mA);
 
-		Ut= (RegularConvData[0] * CalibrationData.CalibrationForCurrent_mkA1*100) / RegularConvData[6] ;//  Current A/10
-		Current_mkA = Ut;
+		I_Raw_mkA= (RegularConvData[0] * CalibrationData.CalibrationForCurrent_mkA1*100) / RegularConvData[6] ;//  Current A/10
+		Current_mkA = MedianFilter2(I_Raw_mkA);
+		if (Current_mkA<=2)  Current_mkA = 0;
+		Current_1of3 = middle_of_3_ImkA(I_Raw_mkA);
 
 
 
-		if ((resistor01 == 1)&&(CurrentTimer>100) )
-		{
-			//GPIOB->BSRR =  GPIO_BSRR_BR0;
-			Current = MedianFilter1(Current_mA);
-			Current_1of3 = Current_mA;
 
-		}
-		if ((resistor01 == 0)&&(CurrentTimer>100) )
-		{
-			//GPIOB->BSRR =  GPIO_BSRR_BS0;
-			Current = MedianFilter1(Current_mkA);
-			Current_1of3 =  Current_mkA;
-
-		}
 
 
 
 
 		if (Current_1of3>8500)
 		{
-			GPIOB->BSRR =  GPIO_BSRR_BS0;
-			resistor01 = 1;
-			if (EnterToSwitch == 2)
-				CurrentTimer = 0;
-			EnterToSwitch = 1;
-		}
-		if (Current_1of3<5000)
+			CurrentSum =CurrentSum + Current_mA;
+			CurrentSumCap =CurrentSumCap + I_Raw_mA;
+		}else
 		{
-			GPIOB->BSRR =  GPIO_BSRR_BR0;
-			resistor01 = 0;
-			if(EnterToSwitch == 1)
-				CurrentTimer = 0;
-			EnterToSwitch = 2;
+			CurrentSum = CurrentSum + Current_mkA;
+			if (Current_mkA>10) CurrentSumCap =CurrentSumCap + I_Raw_mkA;
+			else CurrentSumCap =CurrentSumCap + Current_mkA;
 		}
-
-		//if ( (GPIOA->IDR & 112) == 0 )
-		//Print_to_USART1_d(CalibrationData.Calibration0ValueForCurrent1,"cal1 ",0);
-		//Print_to_USART1_d(CalibrationData.Calibration0ValueForCurrent,"cal ",0);
-
-		//Current = (Current_mA-CalibrationData.Calibration0ValueForCurrent)/1 ;//2745;
-		//Print_to_USART1_d(Current,"I: ",0);
-	/*	if (Current>=0)
+		if (CurrentTimer == 80)
 		{
-			U_OUTtmp = U_OUTtmp - (int32_t)CalibrationData.ResistanceComp_Ishunt_Wires*Current/10000;
+			Current = CurrentSum/80 ;
+			CurrentSum = 0;
+			CurrentTimer = 0;
 		}
-		else
+
+
+		if (CurrentTimerCap == 166)
 		{
-			U_OUTtmp = U_OUTtmp - (int32_t)CalibrationData.ResistanceComp_Ishunt_Wires*Current/10000;
-			//Print_to_USART1_d(Current,"I: ",0);
-			//P/rint_to_USART1_d(CalibrationData.ResistanceComp_Ishunt_Wires*(-1)*Current/10000,"ResC: ",0);
+			CurrentCapacity = CurrentCapacity+CurrentSumCap/167;
+			CurrentSumCap = 0;
+			CurrentTimerCap = 0;
+			Print_to_USART1("1sec");
 		}
-
-		if (U_OUTtmp<3)
-			U_OUTtmp=0;
-
-		U_OUT = U_OUTtmp;*/
-		U_OUT = U_PS;
-
 
 		DMA_ITConfig(DMA1_Channel1, DMA1_IT_TC1, ENABLE);
   }

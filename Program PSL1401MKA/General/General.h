@@ -98,6 +98,10 @@ volatile int32_t Current;
 volatile uint8_t resistor01;
 
 volatile int32_t CurrentTimer;
+volatile int32_t CurrentTimerCap;
+volatile uint32_t CurrentSum;
+volatile uint32_t CurrentSumCap;
+volatile uint32_t CurrentCapacity;
 #define MAX_LOG_ITEMS 24
 
 struct StructLoggingData
