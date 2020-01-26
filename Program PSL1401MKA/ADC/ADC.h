@@ -5,8 +5,8 @@
 #define NULL         0
 #define STOPPER   0 /* Smaller than any datum */
 #define MEDIAN_FILTER_SIZE 21 //Voltage
-#define MEDIAN_FILTER_SIZE1 41 //Current
-#define MEDIAN_FILTER_SIZE2 41 //Current MEDIAN_FILTER_SIZE1  = MEDIAN_FILTER_SIZE2 !!! it musts
+#define MEDIAN_FILTER_SIZE1 11 //Current
+#define MEDIAN_FILTER_SIZE2 11 //Current MEDIAN_FILTER_SIZE1  = MEDIAN_FILTER_SIZE2 !!! it musts
 
 #define NUMBER_OF_CHANNELS 8
 __IO uint16_t RegularConvData[NUMBER_OF_CHANNELS] ;
@@ -29,4 +29,5 @@ uint16_t MedianFilter(uint16_t datum);
 uint16_t MedianFilter2(uint16_t datum);
 int32_t middle_of_3(int32_t a, int32_t b, int32_t c);
 int32_t middle_of_3Umax(int32_t value);
-int32_t middle_of_3Imax(int32_t value);
+int32_t middle_of_3_ImkA(int32_t value);
+int32_t middle_of_3_ImA(int32_t value);

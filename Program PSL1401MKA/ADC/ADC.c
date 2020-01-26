@@ -113,6 +113,7 @@ void TIM3_IRQHandler()
 		TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
 		volatile int16_t U_OUTtmp = 0;
 		volatile int16_t Ut = 0;
+		volatile int32_t Current_1of3=0;
 
 		//a= (22+95)*1000/(1470-330);
 		//b= 22 - (a*330/1000);
@@ -121,7 +122,7 @@ void TIM3_IRQHandler()
 		DMA_ClearITPendingBit( DMA1_IT_TC1);
 		DMA_ITConfig(DMA1_Channel1, DMA1_IT_TC1, DISABLE);
 		Ut= (RegularConvData[2] * CalibrationData.CalibrationFor_U_PS1) / RegularConvData[6];
-		U_PS = MedianFilter2(Ut);
+		U_PS = MedianFilter(Ut);
 		if (U_PS < 3) U_PS = 0;
 		U_Controller = 491520 / RegularConvData[6];// Uref V/10;  1200 * 4096/ChVref
 		Ut = (RegularConvData[2] * CalibrationData.CalibrationFor_U_PS2) / RegularConvData[6];
@@ -131,29 +132,32 @@ void TIM3_IRQHandler()
 		Ut = (RegularConvData[4] * CalibrationData.CalibrationFor_U_PS3) / RegularConvData[6];
 		U_IN = middle_of_3Umax(Ut);
 		Ut = (RegularConvData[1] * CalibrationData.CalibrationForCurrent_mA1*10) / RegularConvData[6] ;//  Current A/10
-		Current_mA=1000*MedianFilter1(Ut);
+
+		Current_mA=1000*middle_of_3_ImA(Ut);
 
 		Ut= (RegularConvData[0] * CalibrationData.CalibrationForCurrent_mkA1*100) / RegularConvData[6] ;//  Current A/10
-		Current_mkA = MedianFilter(Ut);
+		Current_mkA = middle_of_3_ImkA(Ut);
 
 		if (resistor01 == 1)
 		{
 			//GPIOB->BSRR =  GPIO_BSRR_BR0;
+			Current_1of3 = MedianFilter2(Current_mA);
 			Current = Current_mA;
 		}
 		if (resistor01 == 0)
 		{
 			//GPIOB->BSRR =  GPIO_BSRR_BS0;
+			Current_1of3 = MedianFilter1(Current_mkA);
 			Current = Current_mkA;
 		}
 
 
-		if (Current>8500)
+		if (Current_1of3>8500)
 		{
 			GPIOB->BSRR =  GPIO_BSRR_BS0;
 			resistor01 = 1;
 		}
-		if (Current<7000)
+		if (Current_1of3<7000)
 		{
 			GPIOB->BSRR =  GPIO_BSRR_BR0;
 			resistor01 = 0;
@@ -482,16 +486,42 @@ int32_t middle_of_3(int32_t a, int32_t b, int32_t c)
    }
 
    return middle;
-}int32_t middle_of_3Imax(int32_t value)
+}
+int32_t middle_of_3_ImkA(int32_t value)
 {
-   static int32_t InputValueI[3]={0,0,0};
+   static int32_t InputValueI1[3]={0,0,0};
    int32_t middle,a,b,c;
-   InputValueI[2] = InputValueI[1];
-   InputValueI[1] = InputValueI[0];
-   InputValueI[0] = value;
-   a = InputValueI[2];
-   b = InputValueI[1];
-   c = InputValueI[0];
+   InputValueI1[2] = InputValueI1[1];
+   InputValueI1[1] = InputValueI1[0];
+   InputValueI1[0] = value;
+   a = InputValueI1[2];
+   b = InputValueI1[1];
+   c = InputValueI1[0];
+   if ((a <= b) && (a <= c)){
+      middle = (b <= c) ? b : c;
+   }
+   else{
+      if ((b <= a) && (b <= c)){
+         middle = (a <= c) ? a : c;
+      }
+      else{
+         middle = (a <= b) ? a : b;
+      }
+   }
+
+   return middle;
+}
+
+int32_t middle_of_3_ImA(int32_t value)
+{
+   static int32_t InputValueI2[3]={0,0,0};
+   int32_t middle,a,b,c;
+   InputValueI2[2] = InputValueI2[1];
+   InputValueI2[1] = InputValueI2[0];
+   InputValueI2[0] = value;
+   a = InputValueI2[2];
+   b = InputValueI2[1];
+   c = InputValueI2[0];
    if ((a <= b) && (a <= c)){
       middle = (b <= c) ? b : c;
    }

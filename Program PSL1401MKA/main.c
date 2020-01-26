@@ -22,7 +22,7 @@
 //#define VOLTAGE_OFF_SYSTEM 1400
 //#define VOLTAGE_OFF_SYSTEM 700
 
-char Version[] = "PSL1401mkA v1.00";
+char Version[] = "PSL1401mkA v1.01";
 
 
 Key_Pressed_t pressedKey = 0;
