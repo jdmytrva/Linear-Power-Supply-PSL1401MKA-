@@ -22,7 +22,7 @@
 //#define VOLTAGE_OFF_SYSTEM 1400
 //#define VOLTAGE_OFF_SYSTEM 700
 
-char Version[] = "PSL1401mkA v1.01";
+char Version[] = "PSL1401mkA v1.02";
 
 
 Key_Pressed_t pressedKey = 0;
@@ -152,12 +152,19 @@ void MenuPowerSupply(Key_Pressed_t key) //PowerSupply
 
 		if (On_off == 1)
 		{
-			if (Current < 10000)
+			if (Current < 1000)
 			{
 				PrintToLCD(itoa(Current));
 				//lcd_set_xy(5,1);
-				PrintToLCD("mkA    ");
+				PrintToLCD("uA    ");
 			}
+			if ((Current >= 1000)&&Current < 10000 )
+			{
+				PrintToLCD(itoa_koma(Current/100,1));
+				//lcd_set_xy(5,1);
+				PrintToLCD("mA    ");
+			}
+
 
 			if (Current >= 10000)
 			{
@@ -170,7 +177,7 @@ void MenuPowerSupply(Key_Pressed_t key) //PowerSupply
 		{
 			PrintToLCD(itoa(Current));
 			//lcd_set_xy(4,1);
-			PrintToLCD("mkA     ");
+			PrintToLCD("uA     ");
 		}
 
 
@@ -203,7 +210,7 @@ void MenuPowerSupply(Key_Pressed_t key) //PowerSupply
 		lcd_set_xy(0,0);
 		PrintToLCD("5ms ");
 		PrintToLCD(itoa(CurrentCapacity/3600));
-		PrintToLCD("mkA/h              ");
+		PrintToLCD("uA/h              ");
 	}
 	if(CountShow == 2)
 	{
@@ -215,7 +222,7 @@ void MenuPowerSupply(Key_Pressed_t key) //PowerSupply
 		lcd_set_xy(0,0);
 		PrintToLCD("1s ");
 		PrintToLCD(itoa(BatteryCapacityDischargeCurrent/3600));
-		PrintToLCD("mkA/h                ");
+		PrintToLCD("uA/h                ");
 	}
 
 }

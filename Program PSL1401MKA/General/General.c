@@ -60,11 +60,11 @@ struct StructCalibrationValuetoSaveInFlash CalibrationDataFactory=
 		ADDRESS_FLASH_CALIBRATTION+4,
 		0,//Calibration0ValueForCurrent1
 		ADDRESS_FLASH_CALIBRATTION+8,
-		43,//CalibrationForCurrent_mA1
+		34,//CalibrationForCurrent_mA1
 		ADDRESS_FLASH_CALIBRATTION+12,
-		50,//CalibrationForCurrent_mkA1
+		21,//CalibrationForCurrent_mkA1
 		ADDRESS_FLASH_CALIBRATTION+16,
-		990,//CalibrationFor_U_PS1
+		2172,//CalibrationFor_U_PS1
 		ADDRESS_FLASH_CALIBRATTION+20,
 		990,//CalibrationFor_U_PS2
 		ADDRESS_FLASH_CALIBRATTION+24,

@@ -133,9 +133,9 @@ void TIM3_IRQHandler()
 		if (U_OUTtmp<3) U_OUTtmp = 0;
 		Ut = (RegularConvData[4] * CalibrationData.CalibrationFor_U_PS3) / RegularConvData[6];
 		U_IN = middle_of_3Umax(Ut);
-		I_Raw_mA = (RegularConvData[1] * CalibrationData.CalibrationForCurrent_mA1*10) / RegularConvData[6] ;//  Current A/10
+		I_Raw_mA = (RegularConvData[1] * CalibrationData.CalibrationForCurrent_mA1*100) / RegularConvData[6] ;//  Current A/10
 
-		Current_mA=1000*MedianFilter1(I_Raw_mA);
+		Current_mA=100*MedianFilter1(I_Raw_mA);
 
 		I_Raw_mkA= (RegularConvData[0] * CalibrationData.CalibrationForCurrent_mkA1*100) / RegularConvData[6] ;//  Current A/10
 		Current_mkA = MedianFilter2(I_Raw_mkA);
@@ -149,7 +149,7 @@ void TIM3_IRQHandler()
 
 
 
-		if (Current_1of3>8500)
+		if (Current_1of3>4900)
 		{
 			CurrentSum =CurrentSum + Current_mA;
 			CurrentSumCap =CurrentSumCap + I_Raw_mA;
