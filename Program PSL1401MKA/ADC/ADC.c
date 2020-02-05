@@ -152,7 +152,7 @@ void TIM3_IRQHandler()
 		if (Current_1of3>4900)
 		{
 			CurrentSum =CurrentSum + Current_mA;
-			CurrentSumCap =CurrentSumCap + I_Raw_mA;
+			CurrentSumCap =CurrentSumCap + I_Raw_mA*100;
 		}else
 		{
 			CurrentSum = CurrentSum + Current_mkA;
@@ -169,10 +169,10 @@ void TIM3_IRQHandler()
 
 		if (CurrentTimerCap == 166)
 		{
-			CurrentCapacity = CurrentCapacity+CurrentSumCap/167;
+			CurrentCapacity5ms = CurrentCapacity5ms+CurrentSumCap/167;
 			CurrentSumCap = 0;
 			CurrentTimerCap = 0;
-			Print_to_USART1("1sec");
+			//Print_to_USART1("1sec");
 		}
 
 		DMA_ITConfig(DMA1_Channel1, DMA1_IT_TC1, ENABLE);

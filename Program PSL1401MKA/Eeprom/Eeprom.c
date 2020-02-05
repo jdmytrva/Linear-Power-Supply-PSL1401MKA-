@@ -400,33 +400,33 @@ uint8_t SettingsReadFromFlashForVerify(void)
 //===============
 uint8_t DataWhenPowerOffWriteToFlash(void)
 {
-	Print_to_USART1_d(SaveDataWhenPowerOff.BatteryCapacityDischargePreviousValue,"Write C maH : ",0);
+	Print_to_USART1_d(SaveDataWhenPowerOff.CurrentConsumption5ms,"Write C maH : ",0);
 	flash_erase_page( SaveDataWhenPowerOff.CRC_AddresInEEprom);
 	flash_write( SaveDataWhenPowerOff.CRC_AddresInEEprom, SaveDataWhenPowerOff.CRC_data);
-	flash_write( SaveDataWhenPowerOff.BatteryCapacityDischargePrevious_AddresInEEprom, SaveDataWhenPowerOff.BatteryCapacityDischargePreviousValue);
-	flash_write( SaveDataWhenPowerOff.BatteryCapacityDischargeCurrent_AddresInEEprom, SaveDataWhenPowerOff.BatteryCapacityDischargeCurrent);
+	flash_write( SaveDataWhenPowerOff.BatteryCapacityDischargePrevious_AddresInEEprom, SaveDataWhenPowerOff.CurrentConsumption5ms);
+	flash_write( SaveDataWhenPowerOff.BatteryCapacityDischargeCurrent_AddresInEEprom, SaveDataWhenPowerOff.CurrentConsumption1s);
 	Print_to_USART1("DataWhenPowerOffWriteToFlash ");
 }
 uint8_t DataWhenPowerOff_Factory_WriteToFlash(void)
 {
 	flash_erase_page( SaveDataWhenPowerOffFactory.CRC_AddresInEEprom);
 	flash_write( SaveDataWhenPowerOffFactory.CRC_AddresInEEprom, SaveDataWhenPowerOffFactory.CRC_data);
-	flash_write( SaveDataWhenPowerOffFactory.BatteryCapacityDischargePrevious_AddresInEEprom, SaveDataWhenPowerOffFactory.BatteryCapacityDischargePreviousValue);
-	flash_write( SaveDataWhenPowerOffFactory.BatteryCapacityDischargeCurrent_AddresInEEprom, SaveDataWhenPowerOffFactory.BatteryCapacityDischargeCurrent);
+	flash_write( SaveDataWhenPowerOffFactory.BatteryCapacityDischargePrevious_AddresInEEprom, SaveDataWhenPowerOffFactory.CurrentConsumption5ms);
+	flash_write( SaveDataWhenPowerOffFactory.BatteryCapacityDischargeCurrent_AddresInEEprom, SaveDataWhenPowerOffFactory.CurrentConsumption1s);
 	Print_to_USART1("DataWhenPowerOff_Factory_WriteToFlash ");
 }
 uint8_t DataWhenPowerOffReadFromFlash(void)
 {
 	SaveDataWhenPowerOff.CRC_data = flash_read(SaveDataWhenPowerOff.CRC_AddresInEEprom,0,256);
-	SaveDataWhenPowerOff.BatteryCapacityDischargePreviousValue =  flash_read(SaveDataWhenPowerOff.BatteryCapacityDischargePrevious_AddresInEEprom,0,4000000000);
-	SaveDataWhenPowerOff.BatteryCapacityDischargeCurrent = flash_read(SaveDataWhenPowerOff.BatteryCapacityDischargeCurrent_AddresInEEprom,0,4000000000);
+	SaveDataWhenPowerOff.CurrentConsumption5ms =  flash_read(SaveDataWhenPowerOff.BatteryCapacityDischargePrevious_AddresInEEprom,0,4000000000);
+	SaveDataWhenPowerOff.CurrentConsumption1s = flash_read(SaveDataWhenPowerOff.BatteryCapacityDischargeCurrent_AddresInEEprom,0,4000000000);
 	Print_to_USART1("DataWhenPowerOffReadFromFlash ");
 }
 uint8_t DataWhenPowerOffReadFromFlashForVerify(void)
 {
 	SaveDataWhenPowerOffForVerify.CRC_data = flash_read(SaveDataWhenPowerOffForVerify.CRC_AddresInEEprom,0,256);
-	SaveDataWhenPowerOffForVerify.BatteryCapacityDischargePreviousValue =  flash_read(SaveDataWhenPowerOffForVerify.BatteryCapacityDischargePrevious_AddresInEEprom,0,4000000000);
-	SaveDataWhenPowerOffForVerify.BatteryCapacityDischargeCurrent = flash_read(SaveDataWhenPowerOffForVerify.BatteryCapacityDischargeCurrent_AddresInEEprom,0,4000000000);
+	SaveDataWhenPowerOffForVerify.CurrentConsumption5ms =  flash_read(SaveDataWhenPowerOffForVerify.BatteryCapacityDischargePrevious_AddresInEEprom,0,4000000000);
+	SaveDataWhenPowerOffForVerify.CurrentConsumption1s = flash_read(SaveDataWhenPowerOffForVerify.BatteryCapacityDischargeCurrent_AddresInEEprom,0,4000000000);
 	Print_to_USART1("DataWhenPowerOffReadFromFlashForVerify ");
 }
 

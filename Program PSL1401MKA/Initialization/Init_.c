@@ -45,11 +45,11 @@ void Init_Out(void)
 	GPIOA->CRL &= ~GPIO_CRL_CNF1;
 
 	*/
-//MKA
+//Checking AC fail; 0 - OK, 1 - AC fail
 	GPIOB->CRL &= ~GPIO_CRL_MODE0;
 	GPIOB->CRL &= ~GPIO_CRL_CNF0;
-	GPIOB->CRL |=  GPIO_CRL_MODE0_1;
-	GPIOB->CRL &= ~GPIO_CRL_CNF0;
+	GPIOB->CRL |=  GPIO_CRL_CNF0_1;
+	GPIOB->BSRR =  GPIO_BSRR_BS0;
 
 	//led
 	GPIOA->CRH &= ~GPIO_CRH_MODE8;

@@ -68,10 +68,10 @@ struct StructValuetoSaveInFlashWhenPowerOFF
 	uint32_t CRC_data;
 	uint32_t CRC_AddresInEEprom;
 
-	uint32_t BatteryCapacityDischargePreviousValue;
+	uint32_t CurrentConsumption5ms;
 	uint32_t BatteryCapacityDischargePrevious_AddresInEEprom;
 
-	uint32_t BatteryCapacityDischargeCurrent;
+	uint32_t CurrentConsumption1s;
 	uint32_t BatteryCapacityDischargeCurrent_AddresInEEprom;
 };
 
@@ -101,7 +101,7 @@ volatile int32_t CurrentTimer;
 volatile int32_t CurrentTimerCap;
 volatile uint32_t CurrentSum;
 volatile uint32_t CurrentSumCap;
-volatile uint32_t CurrentCapacity;
+volatile uint32_t CurrentCapacity5ms;
 #define MAX_LOG_ITEMS 24
 
 struct StructLoggingData

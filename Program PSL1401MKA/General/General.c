@@ -160,9 +160,9 @@ struct StructValuetoSaveInFlashWhenPowerOFF SaveDataWhenPowerOffFactory=
 {
 		0,//CRC
 		ADDRESS_FLASH_WHEN_OFF,
-		0,//BatteryCapacityDischargePreviousValue
+		0,//CurrentConsumption5ms
 		ADDRESS_FLASH_WHEN_OFF+4,
-		0,//BatteryCapacityDischargeCurrent
+		0,//CurrentConsumption1s
 		ADDRESS_FLASH_WHEN_OFF+8
 };
 
@@ -176,7 +176,7 @@ volatile int32_t CurrentTimer = 0;
 volatile int32_t CurrentTimerCap = 0;
 volatile uint32_t CurrentSum=0;
 volatile uint32_t CurrentSumCap = 0;
-volatile uint32_t CurrentCapacity = 0;
+volatile uint32_t CurrentCapacity5ms = 0;
 
 
 void WriteInLOG(char  str [17])
@@ -337,8 +337,8 @@ void InfoToUARTBeforeStart(void)
 	Print_to_USART1_d(SettingsData.Swing_DChrg_time ,"Swing_DChrg_time =",0);
 
 	Print_to_USART1_d(SaveDataWhenPowerOff.CRC_data,"CRC(SaveDataWhenPowerOff) =",0);
-	Print_to_USART1_d(SaveDataWhenPowerOff.BatteryCapacityDischargePreviousValue ,"BatteryCapacityDischargePreviousValue =",0);
-	Print_to_USART1_d(SaveDataWhenPowerOff.BatteryCapacityDischargeCurrent ,"BatteryCapacityDischargeCurrent =",0);
+	Print_to_USART1_d(SaveDataWhenPowerOff.CurrentConsumption5ms ,"CurrentConsumption5ms =",0);
+	Print_to_USART1_d(SaveDataWhenPowerOff.CurrentConsumption1s ,"CurrentConsumption1s =",0);
 
 }
 

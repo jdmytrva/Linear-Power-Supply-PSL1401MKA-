@@ -11,7 +11,7 @@ void MenuLog_Enter();
 
  //       NAME          NEXT,       PREV        PARENT,       CHILD       EnterCallback        SelectCallback         Text
  MENU_ITEM(Menu_1,     Menu_2,     Menu_10,    NULL_MENU,   Menu_1_1,   NULL,                NULL,               "Settings        ");
- MENU_ITEM(Menu_2,     Menu_3,     Menu_1,     NULL_MENU,   Menu_2_1,   NULL,                NULL,               "PowerSupply     ");
+ MENU_ITEM(Menu_2,     Menu_9,     Menu_1,     NULL_MENU,   Menu_2_1,   NULL,                NULL,               "PowerSupply     ");
  MENU_ITEM(Menu_3,     Menu_4,     Menu_2,     NULL_MENU,   Menu_3_1,   NULL,                NULL,               "Load            ");
  MENU_ITEM(Menu_4,     Menu_5,     Menu_3,     NULL_MENU,   Menu_4_1,   NULL,                NULL,               "Charge CC CV    ");
  MENU_ITEM(Menu_5,     Menu_6,     Menu_4,     NULL_MENU,   Menu_5_1,   NULL,                NULL,               "Charge addapt   ");
@@ -19,7 +19,7 @@ void MenuLog_Enter();
  MENU_ITEM(Menu_6a,     Menu_7,     Menu_6,     NULL_MENU,   Menu_6_1a,   NULL,                NULL,             "CheckingCapacity");
  MENU_ITEM(Menu_7,     Menu_8,     Menu_6a,     NULL_MENU,   Menu_7_1,   NULL,                NULL,              "Training        ");
  MENU_ITEM(Menu_8,     Menu_9,     Menu_7,     NULL_MENU,   Menu_8_1,   NULL,                NULL,               "Swing           ");
- MENU_ITEM(Menu_9,     Menu_11,    Menu_8,     NULL_MENU,   Menu_9_1,   NULL,                NULL,               "DIAGNOSTIC      ");
+ MENU_ITEM(Menu_9,     Menu_11,    Menu_2,     NULL_MENU,   Menu_9_1,   NULL,                NULL,               "DIAGNOSTIC      ");
 
  MENU_ITEM(Menu_11,     Menu_10,    Menu_9,     NULL_MENU,   Menu_11_1, NULL,                NULL,               "LOG             ");
 

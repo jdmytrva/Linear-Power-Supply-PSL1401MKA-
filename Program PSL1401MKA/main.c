@@ -22,7 +22,7 @@
 //#define VOLTAGE_OFF_SYSTEM 1400
 //#define VOLTAGE_OFF_SYSTEM 700
 
-char Version[] = "PSL1401mkA v1.02";
+char Version[] = "PSL1401mkA v1.03";
 
 
 Key_Pressed_t pressedKey = 0;
@@ -37,7 +37,7 @@ volatile uint32_t  PowerOffTimesec = 0;
 volatile uint32_t  sec = 0;
 volatile uint32_t  time_min = 0;
 volatile uint32_t  time_hour = 0;
-volatile uint32_t BatteryCapacityDischargeCurrent = 0;
+volatile uint32_t CurrentConsumption1s = 0;
 volatile uint32_t BatteryCapacityDischargeCurrentAfterPOwerUp = 0;
 volatile uint32_t BatteryCapacityCharge = 0;
 int16_t i_LogItems=0;
@@ -205,24 +205,60 @@ void MenuPowerSupply(Key_Pressed_t key) //PowerSupply
 	{
 		if (key == KEY_NEXT)
 		{
-			CurrentCapacity = 0;
+			CurrentCapacity5ms = 0;
+			DischargeTimeSec = 0;
 		}
 		lcd_set_xy(0,0);
 		PrintToLCD("5ms ");
-		PrintToLCD(itoa(CurrentCapacity/3600));
-		PrintToLCD("uA/h              ");
+		if ((CurrentCapacity5ms/3600)<1000)
+		{
+			PrintToLCD(itoa(CurrentCapacity5ms/3600));
+			PrintToLCD("uAh ");
+		}else
+		{
+			PrintToLCD(itoa(CurrentCapacity5ms/3600000));
+			PrintToLCD("mAh ");
+
+		}
+		if (DischargeTimeSec<7200)
+		{
+			PrintToLCD(itoa(DischargeTimeSec));
+			PrintToLCD("s            ");
+		}else
+		{
+			PrintToLCD(itoa(DischargeTimeSec/3600));
+			PrintToLCD("h            ");
+		}
 	}
 	if(CountShow == 2)
 	{
 		if (key == KEY_NEXT)
 		{
-			BatteryCapacityDischargeCurrent = 0;
+			CurrentConsumption1s = 0;
+			DischargeTimeSec = 0;
 		}
 
 		lcd_set_xy(0,0);
 		PrintToLCD("1s ");
-		PrintToLCD(itoa(BatteryCapacityDischargeCurrent/3600));
-		PrintToLCD("uA/h                ");
+		if ((CurrentConsumption1s/3600)<1000)
+		{
+			PrintToLCD(itoa(CurrentConsumption1s/3600));
+			PrintToLCD("uAh ");
+		}else
+		{
+			PrintToLCD(itoa(CurrentConsumption1s/3600000));
+			PrintToLCD("mAh ");
+
+		}
+		if (DischargeTimeSec<7200)
+		{
+			PrintToLCD(itoa(DischargeTimeSec));
+			PrintToLCD("s            ");
+		}else
+		{
+			PrintToLCD(itoa(DischargeTimeSec/3600));
+			PrintToLCD("h            ");
+		}
 	}
 
 }
@@ -834,13 +870,13 @@ void MenuSettingsWriteToFlash_Enter(Key_Pressed_t key)
 
 void MenuDischarge_Enter(Key_Pressed_t key)
 {
-	if (BatteryCapacityDischargeCurrent/3600>10)
+	if (CurrentConsumption1s/3600>10)
 	{
 		char str[17];
 		char strout[17];
 		char s_clock[17];
 		ClockStringNoSec(DischargeTimeSec,s_clock);
-		Merge3Strings(itoaP(BatteryCapacityDischargeCurrent/3600,str),"mAh",s_clock,strout);
+		Merge3Strings(itoaP(CurrentConsumption1s/3600,str),"mAh",s_clock,strout);
 		WriteInLOGc(strout,DISCHARGE_l);
 	}
 
@@ -926,7 +962,7 @@ void TIM7_IRQHandler()
   {
     TIM_ClearITPendingBit(TIM7, TIM_IT_Update);
     BUT_Debrief();
-    //All_OUT_OFF_When_Power_OFF();
+    All_OUT_OFF_When_Power_OFF();
     TimerForReadyMeasurement_ms++;
   }
 }
@@ -940,7 +976,7 @@ void TIM1_UP_TIM16_IRQHandler()
 
 	//capacity
 
-	BatteryCapacityDischargeCurrent = BatteryCapacityDischargeCurrent  + Current;
+	CurrentConsumption1s = CurrentConsumption1s  + Current;
 	if (ChargeStatusForTimer == 1)
 		ChargeTimeSec++;
 	if (DisChargeStatusForTimer == 1)
@@ -1011,30 +1047,39 @@ void ClockOnLCD_noSec (uint32_t time)
 void All_OUT_OFF_When_Power_OFF()
 {
 	static uint8_t EEpromWrite_status = 1;
-	if (U_IN < VOLTAGE_OFF_SYSTEM)
+	if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0))
 	{
 		OFF();
 		if (EEpromWrite_status == 0)
 		{
 			EEpromWrite_status = 1;
-			SaveDataWhenPowerOff.BatteryCapacityDischargeCurrent = BatteryCapacityDischargeCurrent;
+			SaveDataWhenPowerOff.CurrentConsumption1s = CurrentConsumption1s;
+			SaveDataWhenPowerOff.CurrentConsumption5ms = CurrentCapacity5ms;
 			DataWhenPowerOffWriteToFlash_CRC();
-			Print_to_USART1_d(SaveDataWhenPowerOff.BatteryCapacityDischargeCurrent,"dc: ",2);
+			//Print_to_USART1_d(SaveDataWhenPowerOff.CurrentConsumption1s,"dc: ",2);
 			char str[17];
 			char strout[17];
 			char s_clock[17];
-			if (BatteryCapacityDischargeCurrent/3600>10)
+			if (CurrentConsumption1s/3600>1)
 			{
 				ClockStringNoSec(DischargeTimeSec,s_clock);
-				Merge3Strings(itoaP(SaveDataWhenPowerOff.BatteryCapacityDischargeCurrent/3600,str),"mAh",s_clock,strout);
+				Merge3Strings(itoaP(SaveDataWhenPowerOff.CurrentConsumption1s/3600,str),"uAh1s",s_clock,strout);
 				WriteInLOGc(strout,DISCHARGE_l);
 			}
+
+			if (CurrentConsumption1s/3600>1)
+			{
+				ClockStringNoSec(DischargeTimeSec,s_clock);
+				Merge3Strings(itoaP(SaveDataWhenPowerOff.CurrentConsumption5ms/3600,str),"uAh5ms",s_clock,strout);
+				WriteInLOGc(strout,DISCHARGE_l);
+			}
+
 			WriteInLOG(Merge2Strings("PowerOFF ",itoa_komaP(U_IN/10,str,1),strout));
 			uint8_t i=0;
 			for (i = 0; i<50; i++)
 			{
 				Print_to_USART1_d(U_IN,"U off: ",2);
-				Delay_mSec(10);
+				Delay_mSec(50);
 			}
 
 		}
@@ -1110,6 +1155,7 @@ void OUT_OFF()
 	On_off = 0;
    	//Print_to_USART1_d(On_off,"Select OFF:",0);
 	Status_Out = 0;
+	DisChargeStatusForTimer = 0;
 
 }
 void OUT_ON()
@@ -1122,6 +1168,7 @@ void OUT_ON()
    	//Print_to_USART1_d(On_off,"SelectON:",0);
 	Status_Out = 1;
 	GPIOA->BSRR =  GPIO_BSRR_BS8;//led out on/off
+	DisChargeStatusForTimer = 1;
 }
 
 void LOAD_ON()
@@ -1186,7 +1233,7 @@ int main(void)
 	}
 
 
-    BatteryCapacityDischargeCurrentAfterPOwerUp = SaveDataWhenPowerOff.BatteryCapacityDischargeCurrent;
+    BatteryCapacityDischargeCurrentAfterPOwerUp = SaveDataWhenPowerOff.CurrentConsumption1s;
     ChargeDurationSec = SettingsData.ChargeTime*3600;
     SelectedOptionValue = SettingsData.Option1;
     Print_to_USART1(Version);
@@ -1224,8 +1271,8 @@ int main(void)
     	Print_to_USART1_d(Current,"Curent:",0);
     	Print_to_USART1_d(CurrentTimer,"CurentTimer:",0);
     	Print_to_USART1_d(resistor01,"res:",0);
-    	Print_to_USART1_d(CurrentCapacity,"CurrenrCap:",0);
-    	Print_to_USART1_d(BatteryCapacityDischargeCurrent,"CurrenrCapBat:",0);
+    	Print_to_USART1_d(CurrentCapacity5ms,"CurrenrCap:",0);
+    	Print_to_USART1_d(CurrentConsumption1s,"CurrenrCapBat:",0);
 
 		switch (Button)
 		{
@@ -1314,14 +1361,9 @@ int main(void)
 			OFF();
 			InitiStatus = 0;
 			CountShow = 0;
-			BatteryCapacityDischargeCurrent = 0;
-			CurrentCapacity = 0;
-			SaveDataWhenPowerOff.BatteryCapacityDischargePreviousValue = BatteryCapacityDischargeCurrent;
-			//Print_to_USART1_d(SaveDataWhenPowerOff.BatteryCapacityDischargePreviousValue,"Menu C maH : ",0);
-
-			DischargeTimeSec_Previous = DischargeTimeSec;
-			ChargeDischargeState = 0;
-
+			CurrentConsumption1s = 0;
+			CurrentCapacity5ms = 0;
+			DischargeTimeSec = 0;
 		}
         Delay_ms(100);
     }//while
