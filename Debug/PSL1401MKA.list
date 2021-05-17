@@ -10883,7 +10883,7 @@ __STATIC_INLINE void LL_USART_EnableIT_TXE(USART_TypeDef *USARTx)
  8004d98:	4640      	mov	r0, r8
  8004d9a:	f7fc ff7f 	bl	8001c9c <LL_APB2_GRP1_EnableClock>
   GPIO_InitStruct.Pin = LL_GPIO_PIN_1|LL_GPIO_PIN_2|LL_GPIO_PIN_3|LL_GPIO_PIN_4
- 8004d9e:	f647 637e 	movw	r3, #32382	; 0x7e7e
+ 8004d9e:	f64f 63fe 	movw	r3, #65278	; 0xfefe
   LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
  8004da2:	a909      	add	r1, sp, #36	; 0x24
  8004da4:	4630      	mov	r0, r6
