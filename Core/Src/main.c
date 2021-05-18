@@ -1338,7 +1338,6 @@ void MenuDIAGNOSTIC(Key_Pressed_t key)
 	}
 	if(CountShow1 == 0)
 	{
-		OFF();
 		lcd_set_xy(0,0);
 		//PrintToLCD(" ");
 		PrintToLCD("Uin=");
@@ -1350,30 +1349,26 @@ void MenuDIAGNOSTIC(Key_Pressed_t key)
 	}
 	if(CountShow1 == 1)
 	{
-		OFF();
 		lcd_set_xy(0,0);
-		PrintToLCD("Ups ");
+		PrintToLCD("I1r ");
 		PrintToLCD(itoa_koma(U_PS,2));
-		PrintToLCD("V ");
-		PrintToLCD(itoa((RegularConvData[3])));
+		PrintToLCD("mA ");
+		PrintToLCD(itoa((RegularConvData[4])));
 		PrintToLCD("      ");
 	}
 	if(CountShow1 == 2)
 	{
-		OUT_ON();
 		lcd_set_xy(0,0);
-		PrintToLCD("Uout ");
+		PrintToLCD("I10r ");
 		PrintToLCD(itoa_koma(U_OUT,2));
-		PrintToLCD("V ");
-		PrintToLCD(itoa((RegularConvData[2])));
+		PrintToLCD("mA ");
+		PrintToLCD(itoa((RegularConvData[3])));
 		PrintToLCD("      ");
 	}
 	if(CountShow1 == 3)
 	{
-		LOAD_OFF();
-		OUT_ON();
 		lcd_set_xy(0,0);
-		PrintToLCD("Iout ");
+		PrintToLCD("I100r ");
 		PrintToLCD(itoa(Current));
 		PrintToLCD("mA ");
 		PrintToLCD(itoa((RegularConvData[1])));
@@ -1381,10 +1376,8 @@ void MenuDIAGNOSTIC(Key_Pressed_t key)
 	}
 	if(CountShow1 == 4)
 	{
-		OUT_OFF();
-		LOAD_ON();
 		lcd_set_xy(0,0);
-		PrintToLCD("I(l) ");
+		PrintToLCD("I1k ");
 		PrintToLCD(itoa(Current_load));
 		PrintToLCD("mA ");
 		PrintToLCD(itoa(RegularConvData[0]));
@@ -1392,18 +1385,12 @@ void MenuDIAGNOSTIC(Key_Pressed_t key)
 	}
 	if(CountShow1 == 5)
 	{
-		LOAD_OFF();
-		OUT_ON();
-		CalibrationData.ResistanceComp_MOSFET= (int32_t)(U_PS-U_OUT_ForSetResistance)*10000/Current;
 		lcd_set_xy(0,0);
-		PrintToLCD("R=");
-		PrintToLCD(itoa(CalibrationData.ResistanceComp_Ishunt_Wires));
-		PrintToLCD("mOm ");
-		PrintToLCD(itoa(CalibrationData.ResistanceComp_MOSFET));
-		PrintToLCD("mOm    ");
-		logDebugD("I: ",Current,0);
-		logDebugD("U_PS: ",U_PS,2);
-		logDebugD("U out: ",U_OUT_ForSetResistance,2);
+		PrintToLCD("I1k1 ");
+		PrintToLCD(itoa(Current_load));
+		PrintToLCD("mA ");
+		PrintToLCD(itoa(RegularConvData[5]));
+		PrintToLCD("       ");
 	}
 	if(CountShow1 == 6)
 	{
@@ -2067,7 +2054,7 @@ void All_OUT_OFF_When_Power_OFF()
 			for (i = 0; i<50; i++)
 			{
 				Print_to_USART1_d(U_IN,"U off: ",2);
-				Delay_mSec(50);
+				delay_ms(50);
 			}
 
 		}
@@ -2240,12 +2227,13 @@ void SysTick_Callback()//1 mc
 
 void adc_func()
 {
-	//0  I L
-	//1  I out
-	//2 U out
-	//3 U PS
-	//4 U In
-	//5 T
+	//0 PA1 I 1k
+	//1 PA2 I 100
+	//2 PA3 U
+	//3 PA4 I 10
+	//4 PA5 I 1
+	//5 PB0 Free
+	//  PB1 on/off
 	//6 temp
 	//7 vref
 	volatile int32_t Ut = 0;
