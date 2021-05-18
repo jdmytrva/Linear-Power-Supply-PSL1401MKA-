@@ -221,14 +221,14 @@ void USART1_IRQHandler(void)
 
 	if ( (USART1->SR & USART_SR_TXE) != 0 ) //if(LL_USART_IsActiveFlag_TXE(USART1)) //прерывание по передачи
 	{
-		if (bufferUart1.tx_counter > 0) //если есть что передать
+		if (bufferUart1.tx_counter > 0) //е�?ли е�?ть что передать
 	    {
-	      --bufferUart1.tx_counter; // уменьшаем количество не переданных данных
+	      --bufferUart1.tx_counter; // уменьшаем количе�?тво не переданных данных
 	      //LL_USART_TransmitData8(USART1,tx_buffer[tx_rd_index++]);
-	      USART1->DR = bufferUart1.tx_buffer[bufferUart1.tx_rd_index++]; //передаем данные инкрементируя хвост буфера
+	      USART1->DR = bufferUart1.tx_buffer[bufferUart1.tx_rd_index++]; //передаем данные инкрементиру�? хво�?т буфера
 	      if (bufferUart1.tx_rd_index == TX_BUFFER_SIZE) bufferUart1.tx_rd_index=0; //идем по кругу
 	    }
-	    else //если нечего передать, запрещаем прерывание по передачи
+	    else //е�?ли нечего передать, запрещаем прерывание по передачи
 	    {
 	    	USART1->CR1 &= ~USART_CR1_TXEIE;  // Interrupt Disable
 	    	//LL_USART_DisableIT_TXE(USART1);

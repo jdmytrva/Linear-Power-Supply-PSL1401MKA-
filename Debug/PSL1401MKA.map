@@ -118,6 +118,8 @@ Discarded input sections
  .text          0x0000000000000000        0x0 Core/Src/General.o
  .data          0x0000000000000000        0x0 Core/Src/General.o
  .bss           0x0000000000000000        0x0 Core/Src/General.o
+ .text.GetTemperature
+                0x0000000000000000       0x4c Core/Src/General.o
  .bss.CountAnymSecond
                 0x0000000000000000        0x2 Core/Src/General.o
  .bss.CurrentSum
@@ -380,7 +382,7 @@ Discarded input sections
  .bss.time_min  0x0000000000000000        0x4 Core/Src/main.o
  .data.ChargedStatus
                 0x0000000000000000        0x1 Core/Src/main.o
- .data.EEpromWrite_status.7888
+ .data.EEpromWrite_status.7886
                 0x0000000000000000        0x1 Core/Src/main.o
  .debug_macro   0x0000000000000000      0xacc Core/Src/main.o
  .debug_macro   0x0000000000000000       0x2e Core/Src/main.o
@@ -1345,7 +1347,7 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000008000000                g_pfnVectors
                 0x00000000080001d0                . = ALIGN (0x4)
 
-.text           0x00000000080001d0     0x575c
+.text           0x00000000080001d0     0x5718
                 0x00000000080001d0                . = ALIGN (0x4)
  *(.text)
  .text          0x00000000080001d0       0x40 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtbegin.o
@@ -1422,898 +1424,896 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .text.Generation_Coefficients_R_A_B
                 0x0000000008000bec       0x6c Core/Src/General.o
                 0x0000000008000bec                Generation_Coefficients_R_A_B
- .text.GetTemperature
-                0x0000000008000c58       0x4c Core/Src/General.o
-                0x0000000008000c58                GetTemperature
  .text.WriteInLOG
-                0x0000000008000ca4      0x18c Core/Src/General.o
-                0x0000000008000ca4                WriteInLOG
+                0x0000000008000c58      0x18c Core/Src/General.o
+                0x0000000008000c58                WriteInLOG
  .text.WriteInLOGc
-                0x0000000008000e30      0x190 Core/Src/General.o
-                0x0000000008000e30                WriteInLOGc
+                0x0000000008000de4      0x190 Core/Src/General.o
+                0x0000000008000de4                WriteInLOGc
  .text.delay_us
-                0x0000000008000fc0       0x70 Core/Src/General.o
-                0x0000000008000fc0                delay_us
+                0x0000000008000f74       0x70 Core/Src/General.o
+                0x0000000008000f74                delay_us
  .text.delay_ms
-                0x0000000008001030       0x1e Core/Src/General.o
-                0x0000000008001030                delay_ms
- *fill*         0x000000000800104e        0x2 
+                0x0000000008000fe4       0x1e Core/Src/General.o
+                0x0000000008000fe4                delay_ms
+ *fill*         0x0000000008001002        0x2 
  .text.InfoToUARTBeforeStart
-                0x0000000008001050      0x218 Core/Src/General.o
-                0x0000000008001050                InfoToUARTBeforeStart
- .text.itoa     0x0000000008001268       0x78 Core/Src/Lib.o
-                0x0000000008001268                itoa
- .text.itoaP    0x00000000080012e0       0x76 Core/Src/Lib.o
-                0x00000000080012e0                itoaP
- *fill*         0x0000000008001356        0x2 
+                0x0000000008001004      0x218 Core/Src/General.o
+                0x0000000008001004                InfoToUARTBeforeStart
+ .text.itoa     0x000000000800121c       0x78 Core/Src/Lib.o
+                0x000000000800121c                itoa
+ .text.itoaP    0x0000000008001294       0x76 Core/Src/Lib.o
+                0x0000000008001294                itoaP
+ *fill*         0x000000000800130a        0x2 
  .text.itoa_koma
-                0x0000000008001358       0xd0 Core/Src/Lib.o
-                0x0000000008001358                itoa_koma
+                0x000000000800130c       0xd0 Core/Src/Lib.o
+                0x000000000800130c                itoa_koma
  .text.Module16
-                0x0000000008001428        0xc Core/Src/Lib.o
-                0x0000000008001428                Module16
- .text.strlen1  0x0000000008001434       0x10 Core/Src/Lib.o
-                0x0000000008001434                strlen1
+                0x00000000080013dc        0xc Core/Src/Lib.o
+                0x00000000080013dc                Module16
+ .text.strlen1  0x00000000080013e8       0x10 Core/Src/Lib.o
+                0x00000000080013e8                strlen1
  .text.Merge2Strings
-                0x0000000008001444       0x2c Core/Src/Lib.o
-                0x0000000008001444                Merge2Strings
+                0x00000000080013f8       0x2c Core/Src/Lib.o
+                0x00000000080013f8                Merge2Strings
  .text.Merge3Strings
-                0x0000000008001470       0x46 Core/Src/Lib.o
-                0x0000000008001470                Merge3Strings
+                0x0000000008001424       0x46 Core/Src/Lib.o
+                0x0000000008001424                Merge3Strings
  .text.ClockStringWithSec
-                0x00000000080014b6       0xe6 Core/Src/Lib.o
-                0x00000000080014b6                ClockStringWithSec
+                0x000000000800146a       0xe6 Core/Src/Lib.o
+                0x000000000800146a                ClockStringWithSec
  .text.ClockStringNoSec
-                0x000000000800159c       0x96 Core/Src/Lib.o
-                0x000000000800159c                ClockStringNoSec
- *fill*         0x0000000008001632        0x2 
+                0x0000000008001550       0x96 Core/Src/Lib.o
+                0x0000000008001550                ClockStringNoSec
+ *fill*         0x00000000080015e6        0x2 
  .text.middle_of_3Imax1
-                0x0000000008001634       0x38 Core/Src/Lib.o
-                0x0000000008001634                middle_of_3Imax1
+                0x00000000080015e8       0x38 Core/Src/Lib.o
+                0x00000000080015e8                middle_of_3Imax1
  .text.middle_of_3Imax2
-                0x000000000800166c       0x38 Core/Src/Lib.o
-                0x000000000800166c                middle_of_3Imax2
+                0x0000000008001620       0x38 Core/Src/Lib.o
+                0x0000000008001620                middle_of_3Imax2
  .text.middle_of_3Umax1
-                0x00000000080016a4       0x38 Core/Src/Lib.o
-                0x00000000080016a4                middle_of_3Umax1
+                0x0000000008001658       0x38 Core/Src/Lib.o
+                0x0000000008001658                middle_of_3Umax1
  .text.middle_of_3Umax2
-                0x00000000080016dc       0x38 Core/Src/Lib.o
-                0x00000000080016dc                middle_of_3Umax2
+                0x0000000008001690       0x38 Core/Src/Lib.o
+                0x0000000008001690                middle_of_3Umax2
  .text.middle_of_3Umax3
-                0x0000000008001714       0x38 Core/Src/Lib.o
-                0x0000000008001714                middle_of_3Umax3
+                0x00000000080016c8       0x38 Core/Src/Lib.o
+                0x00000000080016c8                middle_of_3Umax3
  .text.RunningAverageI1
-                0x000000000800174c        0x2 Core/Src/Lib.o
-                0x000000000800174c                RunningAverageI1
+                0x0000000008001700        0x2 Core/Src/Lib.o
+                0x0000000008001700                RunningAverageI1
  .text.RunningAverageI2
-                0x000000000800174e        0x2 Core/Src/Lib.o
-                0x000000000800174e                RunningAverageI2
+                0x0000000008001702        0x2 Core/Src/Lib.o
+                0x0000000008001702                RunningAverageI2
  .text.RunningAverageU1
-                0x0000000008001750        0x2 Core/Src/Lib.o
-                0x0000000008001750                RunningAverageU1
+                0x0000000008001704        0x2 Core/Src/Lib.o
+                0x0000000008001704                RunningAverageU1
  .text.RunningAverageU2
-                0x0000000008001752        0x2 Core/Src/Lib.o
-                0x0000000008001752                RunningAverageU2
+                0x0000000008001706        0x2 Core/Src/Lib.o
+                0x0000000008001706                RunningAverageU2
  .text.Menu_GetCurrentMenu
-                0x0000000008001754        0xc Core/Src/MicroMenu2_1.o
-                0x0000000008001754                Menu_GetCurrentMenu
+                0x0000000008001708        0xc Core/Src/MicroMenu2_1.o
+                0x0000000008001708                Menu_GetCurrentMenu
  .text.Menu_Navigate
-                0x0000000008001760       0x34 Core/Src/MicroMenu2_1.o
-                0x0000000008001760                Menu_Navigate
+                0x0000000008001714       0x34 Core/Src/MicroMenu2_1.o
+                0x0000000008001714                Menu_Navigate
  .text.Menu_SetGenericWriteCallback
-                0x0000000008001794       0x14 Core/Src/MicroMenu2_1.o
-                0x0000000008001794                Menu_SetGenericWriteCallback
+                0x0000000008001748       0x14 Core/Src/MicroMenu2_1.o
+                0x0000000008001748                Menu_SetGenericWriteCallback
  .text.Menu_SelectItem
-                0x00000000080017a8       0x1c Core/Src/MicroMenu2_1.o
-                0x00000000080017a8                Menu_SelectItem
- .text.strobe   0x00000000080017c4       0x24 Core/Src/hd44780_driver.o
-                0x00000000080017c4                strobe
+                0x000000000800175c       0x1c Core/Src/MicroMenu2_1.o
+                0x000000000800175c                Menu_SelectItem
+ .text.strobe   0x0000000008001778       0x24 Core/Src/hd44780_driver.o
+                0x0000000008001778                strobe
  .text.lcd_set_4bit_mode
-                0x00000000080017e8       0x44 Core/Src/hd44780_driver.o
-                0x00000000080017e8                lcd_set_4bit_mode
+                0x000000000800179c       0x44 Core/Src/hd44780_driver.o
+                0x000000000800179c                lcd_set_4bit_mode
  .text.lcd_send
-                0x000000000800182c       0x9c Core/Src/hd44780_driver.o
-                0x000000000800182c                lcd_send
+                0x00000000080017e0       0x9c Core/Src/hd44780_driver.o
+                0x00000000080017e0                lcd_send
  .text.lcd_set_user_char
-                0x00000000080018c8       0x32 Core/Src/hd44780_driver.o
-                0x00000000080018c8                lcd_set_user_char
- *fill*         0x00000000080018fa        0x2 
+                0x000000000800187c       0x32 Core/Src/hd44780_driver.o
+                0x000000000800187c                lcd_set_user_char
+ *fill*         0x00000000080018ae        0x2 
  .text.SetSymbols
-                0x00000000080018fc       0xb0 Core/Src/hd44780_driver.o
-                0x00000000080018fc                SetSymbols
+                0x00000000080018b0       0xb0 Core/Src/hd44780_driver.o
+                0x00000000080018b0                SetSymbols
  .text.lcd_set_xy
-                0x00000000080019ac       0x24 Core/Src/hd44780_driver.o
-                0x00000000080019ac                lcd_set_xy
- .text.lcd_out  0x00000000080019d0       0x2c Core/Src/hd44780_driver.o
-                0x00000000080019d0                lcd_out
+                0x0000000008001960       0x24 Core/Src/hd44780_driver.o
+                0x0000000008001960                lcd_set_xy
+ .text.lcd_out  0x0000000008001984       0x2c Core/Src/hd44780_driver.o
+                0x0000000008001984                lcd_out
  .text.LcdOutbyNumber
-                0x00000000080019fc        0x8 Core/Src/hd44780_driver.o
-                0x00000000080019fc                LcdOutbyNumber
- .text.LcdOut   0x0000000008001a04       0x84 Core/Src/hd44780_driver.o
-                0x0000000008001a04                LcdOut
+                0x00000000080019b0        0x8 Core/Src/hd44780_driver.o
+                0x00000000080019b0                LcdOutbyNumber
+ .text.LcdOut   0x00000000080019b8       0x84 Core/Src/hd44780_driver.o
+                0x00000000080019b8                LcdOut
  .text.lcd_clear
-                0x0000000008001a88        0x8 Core/Src/hd44780_driver.o
-                0x0000000008001a88                lcd_clear
+                0x0000000008001a3c        0x8 Core/Src/hd44780_driver.o
+                0x0000000008001a3c                lcd_clear
  .text.lcd_init
-                0x0000000008001a90       0x1c Core/Src/hd44780_driver.o
-                0x0000000008001a90                lcd_init
+                0x0000000008001a44       0x1c Core/Src/hd44780_driver.o
+                0x0000000008001a44                lcd_init
  .text.PrintToLCD
-                0x0000000008001aac        0x6 Core/Src/hd44780_driver.o
-                0x0000000008001aac                PrintToLCD
+                0x0000000008001a60        0x6 Core/Src/hd44780_driver.o
+                0x0000000008001a60                PrintToLCD
  .text.PrintToLCD_xy
-                0x0000000008001ab2       0x18 Core/Src/hd44780_driver.o
-                0x0000000008001ab2                PrintToLCD_xy
- .text.InitLCD  0x0000000008001aca       0x16 Core/Src/hd44780_driver.o
-                0x0000000008001aca                InitLCD
+                0x0000000008001a66       0x18 Core/Src/hd44780_driver.o
+                0x0000000008001a66                PrintToLCD_xy
+ .text.InitLCD  0x0000000008001a7e       0x16 Core/Src/hd44780_driver.o
+                0x0000000008001a7e                InitLCD
  .text.LL_APB2_GRP1_EnableClock
-                0x0000000008001ae0       0x1c Core/Src/main.o
+                0x0000000008001a94       0x1c Core/Src/main.o
  .text.MenuLog_Enter
-                0x0000000008001afc        0xc Core/Src/main.o
-                0x0000000008001afc                MenuLog_Enter
+                0x0000000008001ab0        0xc Core/Src/main.o
+                0x0000000008001ab0                MenuLog_Enter
  .text.MenuCalibrationWriteToFlash_Enter
-                0x0000000008001b08       0x14 Core/Src/main.o
-                0x0000000008001b08                MenuCalibrationWriteToFlash_Enter
+                0x0000000008001abc       0x14 Core/Src/main.o
+                0x0000000008001abc                MenuCalibrationWriteToFlash_Enter
  .text.MenuSettingsBatteryType_Enter
-                0x0000000008001b1c      0x110 Core/Src/main.o
-                0x0000000008001b1c                MenuSettingsBatteryType_Enter
+                0x0000000008001ad0      0x110 Core/Src/main.o
+                0x0000000008001ad0                MenuSettingsBatteryType_Enter
  .text.MenuSettingsWriteToFlash_Enter
-                0x0000000008001c2c        0x4 Core/Src/main.o
-                0x0000000008001c2c                MenuSettingsWriteToFlash_Enter
+                0x0000000008001be0        0x4 Core/Src/main.o
+                0x0000000008001be0                MenuSettingsWriteToFlash_Enter
  .text.MenuOption_Enter
-                0x0000000008001c30       0x30 Core/Src/main.o
-                0x0000000008001c30                MenuOption_Enter
+                0x0000000008001be4       0x30 Core/Src/main.o
+                0x0000000008001be4                MenuOption_Enter
  .text.MenuOption_Enter1
-                0x0000000008001c60       0x30 Core/Src/main.o
-                0x0000000008001c60                MenuOption_Enter1
+                0x0000000008001c14       0x30 Core/Src/main.o
+                0x0000000008001c14                MenuOption_Enter1
  .text.Generic_Write
-                0x0000000008001c90        0xc Core/Src/main.o
-                0x0000000008001c90                Generic_Write
+                0x0000000008001c44        0xc Core/Src/main.o
+                0x0000000008001c44                Generic_Write
  .text.MenuDischarge_Enter
-                0x0000000008001c9c       0x4c Core/Src/main.o
-                0x0000000008001c9c                MenuDischarge_Enter
+                0x0000000008001c50       0x4c Core/Src/main.o
+                0x0000000008001c50                MenuDischarge_Enter
  .text.MenuCharge_Enter
-                0x0000000008001ce8       0x70 Core/Src/main.o
-                0x0000000008001ce8                MenuCharge_Enter
+                0x0000000008001c9c       0x70 Core/Src/main.o
+                0x0000000008001c9c                MenuCharge_Enter
  .text.SelectedOption.part.0
-                0x0000000008001d58       0x16 Core/Src/main.o
- *fill*         0x0000000008001d6e        0x2 
+                0x0000000008001d0c       0x16 Core/Src/main.o
+ *fill*         0x0000000008001d22        0x2 
  .text.LL_ADC_SetChannelSamplingTime.constprop.0
-                0x0000000008001d70       0x54 Core/Src/main.o
+                0x0000000008001d24       0x54 Core/Src/main.o
  .text.LL_ADC_REG_SetSequencerRanks.constprop.0
-                0x0000000008001dc4       0x38 Core/Src/main.o
+                0x0000000008001d78       0x38 Core/Src/main.o
  .text.NVIC_EncodePriority.constprop.0
-                0x0000000008001dfc        0x4 Core/Src/main.o
+                0x0000000008001db0        0x4 Core/Src/main.o
  .text.MenuTraining_WriteInLOG
-                0x0000000008001e00       0x4c Core/Src/main.o
-                0x0000000008001e00                MenuTraining_WriteInLOG
- .text.MenuLog  0x0000000008001e4c       0x94 Core/Src/main.o
-                0x0000000008001e4c                MenuLog
+                0x0000000008001db4       0x4c Core/Src/main.o
+                0x0000000008001db4                MenuTraining_WriteInLOG
+ .text.MenuLog  0x0000000008001e00       0x94 Core/Src/main.o
+                0x0000000008001e00                MenuLog
  .text.MenuCalibration_CURRENT_Out_to_0
-                0x0000000008001ee0       0x48 Core/Src/main.o
-                0x0000000008001ee0                MenuCalibration_CURRENT_Out_to_0
+                0x0000000008001e94       0x48 Core/Src/main.o
+                0x0000000008001e94                MenuCalibration_CURRENT_Out_to_0
  .text.MenuCalibration_CURRENT_Load_to_0
-                0x0000000008001f28       0x48 Core/Src/main.o
-                0x0000000008001f28                MenuCalibration_CURRENT_Load_to_0
+                0x0000000008001edc       0x48 Core/Src/main.o
+                0x0000000008001edc                MenuCalibration_CURRENT_Load_to_0
  .text.MenuCalibration_BackToFactory
-                0x0000000008001f70       0xb8 Core/Src/main.o
-                0x0000000008001f70                MenuCalibration_BackToFactory
+                0x0000000008001f24       0xb8 Core/Src/main.o
+                0x0000000008001f24                MenuCalibration_BackToFactory
  .text.MenuSettingsChargeTime
-                0x0000000008002028       0x4c Core/Src/main.o
-                0x0000000008002028                MenuSettingsChargeTime
+                0x0000000008001fdc       0x4c Core/Src/main.o
+                0x0000000008001fdc                MenuSettingsChargeTime
  .text.MenuSettingsBatteryType
-                0x0000000008002074       0xf0 Core/Src/main.o
-                0x0000000008002074                MenuSettingsBatteryType
+                0x0000000008002028       0xf0 Core/Src/main.o
+                0x0000000008002028                MenuSettingsBatteryType
  .text.MenuSettingsLowVolt
-                0x0000000008002164       0x44 Core/Src/main.o
-                0x0000000008002164                MenuSettingsLowVolt
+                0x0000000008002118       0x44 Core/Src/main.o
+                0x0000000008002118                MenuSettingsLowVolt
  .text.MenuSettingsMaxVolt
-                0x00000000080021a8       0x44 Core/Src/main.o
-                0x00000000080021a8                MenuSettingsMaxVolt
+                0x000000000800215c       0x44 Core/Src/main.o
+                0x000000000800215c                MenuSettingsMaxVolt
  .text.MenuSettingsSwngChrgTime
-                0x00000000080021ec       0x3c Core/Src/main.o
-                0x00000000080021ec                MenuSettingsSwngChrgTime
+                0x00000000080021a0       0x3c Core/Src/main.o
+                0x00000000080021a0                MenuSettingsSwngChrgTime
  .text.MenuSettingsSwngDChrgTime
-                0x0000000008002228       0x3c Core/Src/main.o
-                0x0000000008002228                MenuSettingsSwngDChrgTime
+                0x00000000080021dc       0x3c Core/Src/main.o
+                0x00000000080021dc                MenuSettingsSwngDChrgTime
  .text.MenuSettingsChargeAddapt
-                0x0000000008002264       0x80 Core/Src/main.o
-                0x0000000008002264                MenuSettingsChargeAddapt
+                0x0000000008002218       0x80 Core/Src/main.o
+                0x0000000008002218                MenuSettingsChargeAddapt
  .text.SelectedOption
-                0x00000000080022e4       0x1c Core/Src/main.o
-                0x00000000080022e4                SelectedOption
+                0x0000000008002298       0x1c Core/Src/main.o
+                0x0000000008002298                SelectedOption
  .text.SelectedOption1
-                0x0000000008002300       0x1c Core/Src/main.o
-                0x0000000008002300                SelectedOption1
+                0x00000000080022b4       0x1c Core/Src/main.o
+                0x00000000080022b4                SelectedOption1
  .text.MenuSettingsSaveMenuPosWhenOFF
-                0x000000000800231c       0xac Core/Src/main.o
-                0x000000000800231c                MenuSettingsSaveMenuPosWhenOFF
+                0x00000000080022d0       0xac Core/Src/main.o
+                0x00000000080022d0                MenuSettingsSaveMenuPosWhenOFF
  .text.MenuSettingsOutAfterPowerUp
-                0x00000000080023c8       0x70 Core/Src/main.o
-                0x00000000080023c8                MenuSettingsOutAfterPowerUp
+                0x000000000800237c       0x70 Core/Src/main.o
+                0x000000000800237c                MenuSettingsOutAfterPowerUp
  .text.BUT_Debrief
-                0x0000000008002438       0x64 Core/Src/main.o
-                0x0000000008002438                BUT_Debrief
+                0x00000000080023ec       0x64 Core/Src/main.o
+                0x00000000080023ec                BUT_Debrief
  .text.BUT_GetKey
-                0x000000000800249c       0x1c Core/Src/main.o
-                0x000000000800249c                BUT_GetKey
+                0x0000000008002450       0x1c Core/Src/main.o
+                0x0000000008002450                BUT_GetKey
  .text.Start_Timer_sec
-                0x00000000080024b8       0x18 Core/Src/main.o
-                0x00000000080024b8                Start_Timer_sec
+                0x000000000800246c       0x18 Core/Src/main.o
+                0x000000000800246c                Start_Timer_sec
  .text.ClockOnLCD_noSec
-                0x00000000080024d0       0x6c Core/Src/main.o
-                0x00000000080024d0                ClockOnLCD_noSec
- .text.OUT_OFF  0x000000000800253c       0x34 Core/Src/main.o
-                0x000000000800253c                OUT_OFF
- .text.OUT_ON   0x0000000008002570       0x34 Core/Src/main.o
-                0x0000000008002570                OUT_ON
+                0x0000000008002484       0x6c Core/Src/main.o
+                0x0000000008002484                ClockOnLCD_noSec
+ .text.OUT_OFF  0x00000000080024f0       0x34 Core/Src/main.o
+                0x00000000080024f0                OUT_OFF
+ .text.OUT_ON   0x0000000008002524       0x34 Core/Src/main.o
+                0x0000000008002524                OUT_ON
  .text.OUTStateAfterPowerUpFunction
-                0x00000000080025a4       0x2c Core/Src/main.o
-                0x00000000080025a4                OUTStateAfterPowerUpFunction
+                0x0000000008002558       0x2c Core/Src/main.o
+                0x0000000008002558                OUTStateAfterPowerUpFunction
  .text.MenuPowerSupply
-                0x00000000080025d0      0x278 Core/Src/main.o
-                0x00000000080025d0                MenuPowerSupply
+                0x0000000008002584      0x278 Core/Src/main.o
+                0x0000000008002584                MenuPowerSupply
  .text.MenuCalibration_CURRENT_Out
-                0x0000000008002848       0x6c Core/Src/main.o
-                0x0000000008002848                MenuCalibration_CURRENT_Out
+                0x00000000080027fc       0x6c Core/Src/main.o
+                0x00000000080027fc                MenuCalibration_CURRENT_Out
  .text.MenuCalibration_VoltagePS
-                0x00000000080028b4       0x70 Core/Src/main.o
-                0x00000000080028b4                MenuCalibration_VoltagePS
+                0x0000000008002868       0x70 Core/Src/main.o
+                0x0000000008002868                MenuCalibration_VoltagePS
  .text.MenuCalibration_VoltageOut
-                0x0000000008002924       0x70 Core/Src/main.o
-                0x0000000008002924                MenuCalibration_VoltageOut
+                0x00000000080028d8       0x70 Core/Src/main.o
+                0x00000000080028d8                MenuCalibration_VoltageOut
  .text.MenuCalibration_VoltageIn
-                0x0000000008002994       0x70 Core/Src/main.o
-                0x0000000008002994                MenuCalibration_VoltageIn
+                0x0000000008002948       0x70 Core/Src/main.o
+                0x0000000008002948                MenuCalibration_VoltageIn
  .text.MenuCalibration_Resist_Comp_5V1A
-                0x0000000008002a04       0xc4 Core/Src/main.o
-                0x0000000008002a04                MenuCalibration_Resist_Comp_5V1A
- .text.LOAD_ON  0x0000000008002ac8       0x20 Core/Src/main.o
-                0x0000000008002ac8                LOAD_ON
+                0x00000000080029b8       0xc4 Core/Src/main.o
+                0x00000000080029b8                MenuCalibration_Resist_Comp_5V1A
+ .text.LOAD_ON  0x0000000008002a7c       0x20 Core/Src/main.o
+                0x0000000008002a7c                LOAD_ON
  .text.discharge
-                0x0000000008002ae8        0xe Core/Src/main.o
-                0x0000000008002ae8                discharge
- *fill*         0x0000000008002af6        0x2 
+                0x0000000008002a9c        0xe Core/Src/main.o
+                0x0000000008002a9c                discharge
+ *fill*         0x0000000008002aaa        0x2 
  .text.MenuCalibration_CURRENT_Load
-                0x0000000008002af8       0x6c Core/Src/main.o
-                0x0000000008002af8                MenuCalibration_CURRENT_Load
+                0x0000000008002aac       0x6c Core/Src/main.o
+                0x0000000008002aac                MenuCalibration_CURRENT_Load
  .text.discharge1
-                0x0000000008002b64       0x38 Core/Src/main.o
-                0x0000000008002b64                discharge1
+                0x0000000008002b18       0x38 Core/Src/main.o
+                0x0000000008002b18                discharge1
  .text.LOAD_OFF
-                0x0000000008002b9c       0x24 Core/Src/main.o
-                0x0000000008002b9c                LOAD_OFF
+                0x0000000008002b50       0x24 Core/Src/main.o
+                0x0000000008002b50                LOAD_OFF
  .text.MenuLoad
-                0x0000000008002bc0       0xac Core/Src/main.o
-                0x0000000008002bc0                MenuLoad
+                0x0000000008002b74       0xac Core/Src/main.o
+                0x0000000008002b74                MenuLoad
  .text.MenuBatterySimilation
-                0x0000000008002c6c       0xe4 Core/Src/main.o
-                0x0000000008002c6c                MenuBatterySimilation
- .text.charge   0x0000000008002d50        0xe Core/Src/main.o
-                0x0000000008002d50                charge
- *fill*         0x0000000008002d5e        0x2 
- .text.charge1  0x0000000008002d60       0x38 Core/Src/main.o
-                0x0000000008002d60                charge1
+                0x0000000008002c20       0xe4 Core/Src/main.o
+                0x0000000008002c20                MenuBatterySimilation
+ .text.charge   0x0000000008002d04        0xe Core/Src/main.o
+                0x0000000008002d04                charge
+ *fill*         0x0000000008002d12        0x2 
+ .text.charge1  0x0000000008002d14       0x38 Core/Src/main.o
+                0x0000000008002d14                charge1
  .text.MenuTraining_new
-                0x0000000008002d98      0x4a0 Core/Src/main.o
-                0x0000000008002d98                MenuTraining_new
+                0x0000000008002d4c      0x4a0 Core/Src/main.o
+                0x0000000008002d4c                MenuTraining_new
  .text.MenuSwing
-                0x0000000008003238      0x1f4 Core/Src/main.o
-                0x0000000008003238                MenuSwing
- .text.OFF      0x000000000800342c        0xe Core/Src/main.o
-                0x000000000800342c                OFF
- *fill*         0x000000000800343a        0x2 
+                0x00000000080031ec      0x1f4 Core/Src/main.o
+                0x00000000080031ec                MenuSwing
+ .text.OFF      0x00000000080033e0        0xe Core/Src/main.o
+                0x00000000080033e0                OFF
+ *fill*         0x00000000080033ee        0x2 
  .text.MenuChargeCC_CV
-                0x000000000800343c      0x2e8 Core/Src/main.o
-                0x000000000800343c                MenuChargeCC_CV
+                0x00000000080033f0      0x2e8 Core/Src/main.o
+                0x00000000080033f0                MenuChargeCC_CV
  .text.MenuChargeAdapt
-                0x0000000008003724      0x378 Core/Src/main.o
-                0x0000000008003724                MenuChargeAdapt
+                0x00000000080036d8      0x378 Core/Src/main.o
+                0x00000000080036d8                MenuChargeAdapt
  .text.MenuDisCharge
-                0x0000000008003a9c      0x2b4 Core/Src/main.o
-                0x0000000008003a9c                MenuDisCharge
+                0x0000000008003a50      0x2b4 Core/Src/main.o
+                0x0000000008003a50                MenuDisCharge
  .text.MenuCheckingCapacity
-                0x0000000008003d50      0x5f8 Core/Src/main.o
-                0x0000000008003d50                MenuCheckingCapacity
+                0x0000000008003d04      0x5f8 Core/Src/main.o
+                0x0000000008003d04                MenuCheckingCapacity
  .text.MenuDIAGNOSTIC
-                0x0000000008004348      0x290 Core/Src/main.o
-                0x0000000008004348                MenuDIAGNOSTIC
+                0x00000000080042fc      0x284 Core/Src/main.o
+                0x00000000080042fc                MenuDIAGNOSTIC
  .text.adc_func
-                0x00000000080045d8      0x244 Core/Src/main.o
-                0x00000000080045d8                adc_func
+                0x0000000008004580      0x244 Core/Src/main.o
+                0x0000000008004580                adc_func
  .text.SysTick_Callback
-                0x000000000800481c       0xe8 Core/Src/main.o
-                0x000000000800481c                SysTick_Callback
+                0x00000000080047c4       0xe8 Core/Src/main.o
+                0x00000000080047c4                SysTick_Callback
  .text.SystemClock_Config
-                0x0000000008004904       0x80 Core/Src/main.o
-                0x0000000008004904                SystemClock_Config
+                0x00000000080048ac       0x80 Core/Src/main.o
+                0x00000000080048ac                SystemClock_Config
  .text.startup.main
-                0x0000000008004984      0x81c Core/Src/main.o
-                0x0000000008004984                main
+                0x000000000800492c      0x830 Core/Src/main.o
+                0x000000000800492c                main
  .text.NMI_Handler
-                0x00000000080051a0        0x2 Core/Src/stm32f1xx_it.o
-                0x00000000080051a0                NMI_Handler
+                0x000000000800515c        0x2 Core/Src/stm32f1xx_it.o
+                0x000000000800515c                NMI_Handler
  .text.HardFault_Handler
-                0x00000000080051a2        0x2 Core/Src/stm32f1xx_it.o
-                0x00000000080051a2                HardFault_Handler
+                0x000000000800515e        0x2 Core/Src/stm32f1xx_it.o
+                0x000000000800515e                HardFault_Handler
  .text.MemManage_Handler
-                0x00000000080051a4        0x2 Core/Src/stm32f1xx_it.o
-                0x00000000080051a4                MemManage_Handler
+                0x0000000008005160        0x2 Core/Src/stm32f1xx_it.o
+                0x0000000008005160                MemManage_Handler
  .text.BusFault_Handler
-                0x00000000080051a6        0x2 Core/Src/stm32f1xx_it.o
-                0x00000000080051a6                BusFault_Handler
+                0x0000000008005162        0x2 Core/Src/stm32f1xx_it.o
+                0x0000000008005162                BusFault_Handler
  .text.UsageFault_Handler
-                0x00000000080051a8        0x2 Core/Src/stm32f1xx_it.o
-                0x00000000080051a8                UsageFault_Handler
+                0x0000000008005164        0x2 Core/Src/stm32f1xx_it.o
+                0x0000000008005164                UsageFault_Handler
  .text.SVC_Handler
-                0x00000000080051aa        0x2 Core/Src/stm32f1xx_it.o
-                0x00000000080051aa                SVC_Handler
+                0x0000000008005166        0x2 Core/Src/stm32f1xx_it.o
+                0x0000000008005166                SVC_Handler
  .text.DebugMon_Handler
-                0x00000000080051ac        0x2 Core/Src/stm32f1xx_it.o
-                0x00000000080051ac                DebugMon_Handler
+                0x0000000008005168        0x2 Core/Src/stm32f1xx_it.o
+                0x0000000008005168                DebugMon_Handler
  .text.PendSV_Handler
-                0x00000000080051ae        0x2 Core/Src/stm32f1xx_it.o
-                0x00000000080051ae                PendSV_Handler
+                0x000000000800516a        0x2 Core/Src/stm32f1xx_it.o
+                0x000000000800516a                PendSV_Handler
  .text.SysTick_Handler
-                0x00000000080051b0        0x4 Core/Src/stm32f1xx_it.o
-                0x00000000080051b0                SysTick_Handler
+                0x000000000800516c        0x4 Core/Src/stm32f1xx_it.o
+                0x000000000800516c                SysTick_Handler
  .text.DMA1_Channel1_IRQHandler
-                0x00000000080051b4        0x2 Core/Src/stm32f1xx_it.o
-                0x00000000080051b4                DMA1_Channel1_IRQHandler
- *fill*         0x00000000080051b6        0x2 
+                0x0000000008005170        0x2 Core/Src/stm32f1xx_it.o
+                0x0000000008005170                DMA1_Channel1_IRQHandler
+ *fill*         0x0000000008005172        0x2 
  .text.USART1_IRQHandler
-                0x00000000080051b8       0x5c Core/Src/stm32f1xx_it.o
-                0x00000000080051b8                USART1_IRQHandler
+                0x0000000008005174       0x5c Core/Src/stm32f1xx_it.o
+                0x0000000008005174                USART1_IRQHandler
  .text.SystemInit
-                0x0000000008005214        0x2 Core/Src/system_stm32f1xx.o
-                0x0000000008005214                SystemInit
- *fill*         0x0000000008005216        0x2 
+                0x00000000080051d0        0x2 Core/Src/system_stm32f1xx.o
+                0x00000000080051d0                SystemInit
+ *fill*         0x00000000080051d2        0x2 
  .text.SystemCoreClockUpdate
-                0x0000000008005218       0x60 Core/Src/system_stm32f1xx.o
-                0x0000000008005218                SystemCoreClockUpdate
+                0x00000000080051d4       0x60 Core/Src/system_stm32f1xx.o
+                0x00000000080051d4                SystemCoreClockUpdate
  .text.printToBufferUART1
-                0x0000000008005278       0xcc Core/Src/usart.o
-                0x0000000008005278                printToBufferUART1
+                0x0000000008005234       0xcc Core/Src/usart.o
+                0x0000000008005234                printToBufferUART1
  .text.printToBufferWithoutEndUART1
-                0x0000000008005344       0x7c Core/Src/usart.o
-                0x0000000008005344                printToBufferWithoutEndUART1
+                0x0000000008005300       0x7c Core/Src/usart.o
+                0x0000000008005300                printToBufferWithoutEndUART1
  .text.printToBufferUART1D
-                0x00000000080053c0      0x140 Core/Src/usart.o
-                0x00000000080053c0                printToBufferUART1D
+                0x000000000800537c      0x140 Core/Src/usart.o
+                0x000000000800537c                printToBufferUART1D
  .text.putCharDirectToUart1
-                0x0000000008005500       0x10 Core/Src/usart.o
-                0x0000000008005500                putCharDirectToUart1
+                0x00000000080054bc       0x10 Core/Src/usart.o
+                0x00000000080054bc                putCharDirectToUart1
  .text.putStringDirectToUart1
-                0x0000000008005510       0x14 Core/Src/usart.o
-                0x0000000008005510                putStringDirectToUart1
+                0x00000000080054cc       0x14 Core/Src/usart.o
+                0x00000000080054cc                putStringDirectToUart1
  .text.Print_to_USART1
-                0x0000000008005524       0x10 Core/Src/usart.o
-                0x0000000008005524                Print_to_USART1
+                0x00000000080054e0       0x10 Core/Src/usart.o
+                0x00000000080054e0                Print_to_USART1
  .text.Reset_Handler
-                0x0000000008005534       0x48 Core/Startup/startup_stm32f100c8tx.o
-                0x0000000008005534                Reset_Handler
+                0x00000000080054f0       0x48 Core/Startup/startup_stm32f100c8tx.o
+                0x00000000080054f0                Reset_Handler
  .text.Default_Handler
-                0x000000000800557c        0x2 Core/Startup/startup_stm32f100c8tx.o
-                0x000000000800557c                RTC_Alarm_IRQHandler
-                0x000000000800557c                EXTI2_IRQHandler
-                0x000000000800557c                TIM1_CC_IRQHandler
-                0x000000000800557c                PVD_IRQHandler
-                0x000000000800557c                EXTI3_IRQHandler
-                0x000000000800557c                EXTI0_IRQHandler
-                0x000000000800557c                TIM1_UP_TIM16_IRQHandler
-                0x000000000800557c                SPI1_IRQHandler
-                0x000000000800557c                TAMPER_IRQHandler
-                0x000000000800557c                TIM6_DAC_IRQHandler
-                0x000000000800557c                DMA1_Channel4_IRQHandler
-                0x000000000800557c                ADC1_IRQHandler
-                0x000000000800557c                USART3_IRQHandler
-                0x000000000800557c                RTC_IRQHandler
-                0x000000000800557c                DMA1_Channel7_IRQHandler
-                0x000000000800557c                TIM4_IRQHandler
-                0x000000000800557c                I2C1_EV_IRQHandler
-                0x000000000800557c                DMA1_Channel6_IRQHandler
-                0x000000000800557c                TIM3_IRQHandler
-                0x000000000800557c                RCC_IRQHandler
-                0x000000000800557c                Default_Handler
-                0x000000000800557c                CEC_IRQHandler
-                0x000000000800557c                EXTI15_10_IRQHandler
-                0x000000000800557c                TIM7_IRQHandler
-                0x000000000800557c                EXTI9_5_IRQHandler
-                0x000000000800557c                DMA1_Channel5_IRQHandler
-                0x000000000800557c                EXTI4_IRQHandler
-                0x000000000800557c                TIM1_TRG_COM_TIM17_IRQHandler
-                0x000000000800557c                DMA1_Channel3_IRQHandler
-                0x000000000800557c                WWDG_IRQHandler
-                0x000000000800557c                TIM2_IRQHandler
-                0x000000000800557c                EXTI1_IRQHandler
-                0x000000000800557c                USART2_IRQHandler
-                0x000000000800557c                DMA1_Channel2_IRQHandler
-                0x000000000800557c                FLASH_IRQHandler
-                0x000000000800557c                I2C1_ER_IRQHandler
-                0x000000000800557c                TIM1_BRK_TIM15_IRQHandler
+                0x0000000008005538        0x2 Core/Startup/startup_stm32f100c8tx.o
+                0x0000000008005538                RTC_Alarm_IRQHandler
+                0x0000000008005538                EXTI2_IRQHandler
+                0x0000000008005538                TIM1_CC_IRQHandler
+                0x0000000008005538                PVD_IRQHandler
+                0x0000000008005538                EXTI3_IRQHandler
+                0x0000000008005538                EXTI0_IRQHandler
+                0x0000000008005538                TIM1_UP_TIM16_IRQHandler
+                0x0000000008005538                SPI1_IRQHandler
+                0x0000000008005538                TAMPER_IRQHandler
+                0x0000000008005538                TIM6_DAC_IRQHandler
+                0x0000000008005538                DMA1_Channel4_IRQHandler
+                0x0000000008005538                ADC1_IRQHandler
+                0x0000000008005538                USART3_IRQHandler
+                0x0000000008005538                RTC_IRQHandler
+                0x0000000008005538                DMA1_Channel7_IRQHandler
+                0x0000000008005538                TIM4_IRQHandler
+                0x0000000008005538                I2C1_EV_IRQHandler
+                0x0000000008005538                DMA1_Channel6_IRQHandler
+                0x0000000008005538                TIM3_IRQHandler
+                0x0000000008005538                RCC_IRQHandler
+                0x0000000008005538                Default_Handler
+                0x0000000008005538                CEC_IRQHandler
+                0x0000000008005538                EXTI15_10_IRQHandler
+                0x0000000008005538                TIM7_IRQHandler
+                0x0000000008005538                EXTI9_5_IRQHandler
+                0x0000000008005538                DMA1_Channel5_IRQHandler
+                0x0000000008005538                EXTI4_IRQHandler
+                0x0000000008005538                TIM1_TRG_COM_TIM17_IRQHandler
+                0x0000000008005538                DMA1_Channel3_IRQHandler
+                0x0000000008005538                WWDG_IRQHandler
+                0x0000000008005538                TIM2_IRQHandler
+                0x0000000008005538                EXTI1_IRQHandler
+                0x0000000008005538                USART2_IRQHandler
+                0x0000000008005538                DMA1_Channel2_IRQHandler
+                0x0000000008005538                FLASH_IRQHandler
+                0x0000000008005538                I2C1_ER_IRQHandler
+                0x0000000008005538                TIM1_BRK_TIM15_IRQHandler
  .text.LL_ADC_Init
-                0x000000000800557e       0x2a Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_adc.o
-                0x000000000800557e                LL_ADC_Init
+                0x000000000800553a       0x2a Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_adc.o
+                0x000000000800553a                LL_ADC_Init
  .text.LL_ADC_REG_Init
-                0x00000000080055a8       0x44 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_adc.o
-                0x00000000080055a8                LL_ADC_REG_Init
+                0x0000000008005564       0x44 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_adc.o
+                0x0000000008005564                LL_ADC_REG_Init
  .text.LL_GPIO_Init
-                0x00000000080055ec       0xfa Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_gpio.o
-                0x00000000080055ec                LL_GPIO_Init
- *fill*         0x00000000080056e6        0x2 
+                0x00000000080055a8       0xfa Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_gpio.o
+                0x00000000080055a8                LL_GPIO_Init
+ *fill*         0x00000000080056a2        0x2 
  .text.RCC_GetHCLKClockFreq
-                0x00000000080056e8       0x18 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
-                0x00000000080056e8                RCC_GetHCLKClockFreq
+                0x00000000080056a4       0x18 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
+                0x00000000080056a4                RCC_GetHCLKClockFreq
  .text.RCC_GetPCLK1ClockFreq
-                0x0000000008005700       0x18 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
-                0x0000000008005700                RCC_GetPCLK1ClockFreq
+                0x00000000080056bc       0x18 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
+                0x00000000080056bc                RCC_GetPCLK1ClockFreq
  .text.RCC_GetPCLK2ClockFreq
-                0x0000000008005718       0x18 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
-                0x0000000008005718                RCC_GetPCLK2ClockFreq
+                0x00000000080056d4       0x18 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
+                0x00000000080056d4                RCC_GetPCLK2ClockFreq
  .text.RCC_PLL_GetFreqDomain_SYS
-                0x0000000008005730       0x34 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
-                0x0000000008005730                RCC_PLL_GetFreqDomain_SYS
+                0x00000000080056ec       0x34 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
+                0x00000000080056ec                RCC_PLL_GetFreqDomain_SYS
  .text.RCC_GetSystemClockFreq
-                0x0000000008005764       0x1c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
-                0x0000000008005764                RCC_GetSystemClockFreq
+                0x0000000008005720       0x1c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
+                0x0000000008005720                RCC_GetSystemClockFreq
  .text.LL_RCC_GetSystemClocksFreq
-                0x0000000008005780       0x20 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
-                0x0000000008005780                LL_RCC_GetSystemClocksFreq
+                0x000000000800573c       0x20 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
+                0x000000000800573c                LL_RCC_GetSystemClocksFreq
  .text.LL_USART_Init
-                0x00000000080057a0       0xd8 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usart.o
-                0x00000000080057a0                LL_USART_Init
+                0x000000000800575c       0xd8 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usart.o
+                0x000000000800575c                LL_USART_Init
  .text.LL_Init1msTick
-                0x0000000008005878       0x1c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_utils.o
-                0x0000000008005878                LL_Init1msTick
+                0x0000000008005834       0x1c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_utils.o
+                0x0000000008005834                LL_Init1msTick
  .text.LL_SetSystemCoreClock
-                0x0000000008005894        0xc Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_utils.o
-                0x0000000008005894                LL_SetSystemCoreClock
+                0x0000000008005850        0xc Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_utils.o
+                0x0000000008005850                LL_SetSystemCoreClock
  .text.__libc_init_array
-                0x00000000080058a0       0x48 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-init.o)
-                0x00000000080058a0                __libc_init_array
- .text.memcpy   0x00000000080058e8       0x1c c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-memcpy-stub.o)
-                0x00000000080058e8                memcpy
- .text.memset   0x0000000008005904       0x10 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-memset.o)
-                0x0000000008005904                memset
+                0x000000000800585c       0x48 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-init.o)
+                0x000000000800585c                __libc_init_array
+ .text.memcpy   0x00000000080058a4       0x1c c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-memcpy-stub.o)
+                0x00000000080058a4                memcpy
+ .text.memset   0x00000000080058c0       0x10 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-memset.o)
+                0x00000000080058c0                memset
  *(.glue_7)
- .glue_7        0x0000000008005914        0x0 linker stubs
+ .glue_7        0x00000000080058d0        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0000000008005914        0x0 linker stubs
+ .glue_7t       0x00000000080058d0        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0000000008005914        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtbegin.o
+ .eh_frame      0x00000000080058d0        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtbegin.o
  *(.init)
- .init          0x0000000008005914        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crti.o
-                0x0000000008005914                _init
- .init          0x0000000008005918        0x8 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtn.o
+ .init          0x00000000080058d0        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crti.o
+                0x00000000080058d0                _init
+ .init          0x00000000080058d4        0x8 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtn.o
  *(.fini)
- .fini          0x0000000008005920        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crti.o
-                0x0000000008005920                _fini
- .fini          0x0000000008005924        0x8 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtn.o
-                0x000000000800592c                . = ALIGN (0x4)
-                0x000000000800592c                _etext = .
+ .fini          0x00000000080058dc        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crti.o
+                0x00000000080058dc                _fini
+ .fini          0x00000000080058e0        0x8 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtn.o
+                0x00000000080058e8                . = ALIGN (0x4)
+                0x00000000080058e8                _etext = .
 
-.vfp11_veneer   0x000000000800592c        0x0
- .vfp11_veneer  0x000000000800592c        0x0 linker stubs
+.vfp11_veneer   0x00000000080058e8        0x0
+ .vfp11_veneer  0x00000000080058e8        0x0 linker stubs
 
-.v4_bx          0x000000000800592c        0x0
- .v4_bx         0x000000000800592c        0x0 linker stubs
+.v4_bx          0x00000000080058e8        0x0
+ .v4_bx         0x00000000080058e8        0x0 linker stubs
 
-.iplt           0x000000000800592c        0x0
- .iplt          0x000000000800592c        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtbegin.o
+.iplt           0x00000000080058e8        0x0
+ .iplt          0x00000000080058e8        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtbegin.o
 
-.rodata         0x000000000800592c     0x1558
-                0x000000000800592c                . = ALIGN (0x4)
+.rodata         0x00000000080058e8     0x1554
+                0x00000000080058e8                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x000000000800592c      0x100 Core/Src/Eeprom.o
+ .rodata        0x00000000080058e8      0x100 Core/Src/Eeprom.o
  *(.rodata*)
  .rodata.flash_write_block.str1.1
-                0x0000000008005a2c       0x15 Core/Src/Eeprom.o
+                0x00000000080059e8       0x15 Core/Src/Eeprom.o
  .rodata.flash_read.str1.1
-                0x0000000008005a41       0x40 Core/Src/Eeprom.o
+                0x00000000080059fd       0x40 Core/Src/Eeprom.o
  .rodata.CalibrationWriteToFlash.str1.1
-                0x0000000008005a81       0x19 Core/Src/Eeprom.o
+                0x0000000008005a3d       0x19 Core/Src/Eeprom.o
  .rodata.CalibrationFactoryWriteToFlash.str1.1
-                0x0000000008005a9a       0x20 Core/Src/Eeprom.o
+                0x0000000008005a56       0x20 Core/Src/Eeprom.o
  .rodata.CalibrationReadFromFlash.str1.1
-                0x0000000008005aba       0x1a Core/Src/Eeprom.o
+                0x0000000008005a76       0x1a Core/Src/Eeprom.o
  .rodata.CalibrationReadFromFlashForVerify.str1.1
-                0x0000000008005ad4       0x23 Core/Src/Eeprom.o
+                0x0000000008005a90       0x23 Core/Src/Eeprom.o
  .rodata.SettingsWriteToFlash.str1.1
-                0x0000000008005af7       0x16 Core/Src/Eeprom.o
+                0x0000000008005ab3       0x16 Core/Src/Eeprom.o
  .rodata.SettingsFactoryWriteToFlash.str1.1
-                0x0000000008005b0d       0x1d Core/Src/Eeprom.o
+                0x0000000008005ac9       0x1d Core/Src/Eeprom.o
  .rodata.SettingsReadFromFlash.str1.1
-                0x0000000008005b2a       0x17 Core/Src/Eeprom.o
+                0x0000000008005ae6       0x17 Core/Src/Eeprom.o
  .rodata.SettingsReadFromFlashForVerify.str1.1
-                0x0000000008005b41       0x20 Core/Src/Eeprom.o
+                0x0000000008005afd       0x20 Core/Src/Eeprom.o
  .rodata.DataWhenPowerOff_Factory_WriteToFlash.str1.1
-                0x0000000008005b61       0x27 Core/Src/Eeprom.o
+                0x0000000008005b1d       0x27 Core/Src/Eeprom.o
  .rodata.DataWhenPowerOffReadFromFlash.str1.1
-                0x0000000008005b88       0x1f Core/Src/Eeprom.o
+                0x0000000008005b44       0x1f Core/Src/Eeprom.o
  .rodata.DataWhenPowerOffReadFromFlashForVerify.str1.1
-                0x0000000008005ba7       0x28 Core/Src/Eeprom.o
+                0x0000000008005b63       0x28 Core/Src/Eeprom.o
  .rodata.ReadFromFlash.str1.1
-                0x0000000008005bcf       0x34 Core/Src/Eeprom.o
+                0x0000000008005b8b       0x34 Core/Src/Eeprom.o
  .rodata.CalibrationWriteToFlash_CRC.str1.1
-                0x0000000008005c03       0x34 Core/Src/Eeprom.o
+                0x0000000008005bbf       0x34 Core/Src/Eeprom.o
                                          0x53 (size before relaxing)
  .rodata.SettingsWriteToFlash_CRC.str1.1
-                0x0000000008005c03       0x34 Core/Src/Eeprom.o
+                0x0000000008005bbf       0x34 Core/Src/Eeprom.o
                                          0x62 (size before relaxing)
  .rodata.FactoryWriteToFlash_CRC.str1.1
-                0x0000000008005c03      0x132 Core/Src/Eeprom.o
+                0x0000000008005bbf      0x132 Core/Src/Eeprom.o
  .rodata.WriteInLOG.str1.1
-                0x0000000008005d35        0x9 Core/Src/General.o
+                0x0000000008005cf1        0x9 Core/Src/General.o
                                          0x11 (size before relaxing)
  .rodata.InfoToUARTBeforeStart.str1.1
-                0x0000000008005d3e      0x249 Core/Src/General.o
- *fill*         0x0000000008005f87        0x1 
+                0x0000000008005cfa      0x249 Core/Src/General.o
+ *fill*         0x0000000008005f43        0x1 
  .rodata.NULL_MENU
-                0x0000000008005f88       0x18 Core/Src/MicroMenu2_1.o
-                0x0000000008005f88                NULL_MENU
+                0x0000000008005f44       0x18 Core/Src/MicroMenu2_1.o
+                0x0000000008005f44                NULL_MENU
  .rodata.MenuCalibrationWriteToFlash_Enter.str1.1
-                0x0000000008005fa0        0xc Core/Src/main.o
+                0x0000000008005f5c        0xc Core/Src/main.o
  .rodata.MenuSettingsBatteryType_Enter.str1.1
-                0x0000000008005fac       0x66 Core/Src/main.o
+                0x0000000008005f68       0x66 Core/Src/main.o
  .rodata.MenuDischarge_Enter.str1.1
-                0x0000000008006012        0x4 Core/Src/main.o
+                0x0000000008005fce        0x4 Core/Src/main.o
  .rodata.MenuCharge_Enter.str1.1
-                0x0000000008006016        0x8 Core/Src/main.o
+                0x0000000008005fd2        0x8 Core/Src/main.o
                                          0x10 (size before relaxing)
  .rodata.MenuLog.str1.1
-                0x000000000800601e       0x20 Core/Src/main.o
+                0x0000000008005fda       0x20 Core/Src/main.o
  .rodata.MenuCalibration_CURRENT_Out_to_0.str1.1
-                0x000000000800603e        0xf Core/Src/main.o
+                0x0000000008005ffa        0xf Core/Src/main.o
  .rodata.MenuCalibration_BackToFactory.str1.1
-                0x000000000800604d       0x53 Core/Src/main.o
+                0x0000000008006009       0x53 Core/Src/main.o
  .rodata.MenuSettingsChargeTime.str1.1
-                0x00000000080060a0        0x5 Core/Src/main.o
+                0x000000000800605c        0x5 Core/Src/main.o
  .rodata.MenuSettingsBatteryType.str1.1
-                0x00000000080060a5       0x75 Core/Src/main.o
+                0x0000000008006061       0x75 Core/Src/main.o
  .rodata.MenuSettingsLowVolt.str1.1
-                0x000000000800611a       0x75 Core/Src/main.o
+                0x00000000080060d6       0x75 Core/Src/main.o
                                           0x5 (size before relaxing)
  .rodata.MenuSettingsSwngChrgTime.str1.1
-                0x000000000800611a        0x9 Core/Src/main.o
+                0x00000000080060d6        0x9 Core/Src/main.o
  .rodata.MenuSettingsChargeAddapt.str1.1
-                0x0000000008006123        0x6 Core/Src/main.o
+                0x00000000080060df        0x6 Core/Src/main.o
  .rodata.MenuSettingsSaveMenuPosWhenOFF.str1.1
-                0x0000000008006129       0x77 Core/Src/main.o
+                0x00000000080060e5       0x77 Core/Src/main.o
  .rodata.MenuSettingsOutAfterPowerUp.str1.1
-                0x00000000080061a0       0x33 Core/Src/main.o
+                0x000000000800615c       0x33 Core/Src/main.o
  .rodata.ClockOnLCD.str1.1
-                0x00000000080061d3        0x2 Core/Src/main.o
+                0x000000000800618f        0x2 Core/Src/main.o
                                           0x4 (size before relaxing)
  .rodata.MenuPowerSupply.str1.1
-                0x00000000080061d5       0x49 Core/Src/main.o
+                0x0000000008006191       0x49 Core/Src/main.o
  .rodata.MenuCalibration_CURRENT_Out.str1.1
-                0x000000000800621e        0x5 Core/Src/main.o
+                0x00000000080061da        0x5 Core/Src/main.o
                                           0x9 (size before relaxing)
  .rodata.MenuCalibration_Resist_Comp_5V1A.str1.1
-                0x0000000008006223        0xb Core/Src/main.o
+                0x00000000080061df        0xb Core/Src/main.o
  .rodata.discharge1.str1.1
-                0x000000000800622e        0xa Core/Src/main.o
+                0x00000000080061ea        0xa Core/Src/main.o
  .rodata.MenuBatterySimilation.str1.1
-                0x0000000008006238        0xf Core/Src/main.o
+                0x00000000080061f4        0xf Core/Src/main.o
  .rodata.charge1.str1.1
-                0x0000000008006247        0xf Core/Src/main.o
+                0x0000000008006203        0xf Core/Src/main.o
                                           0x7 (size before relaxing)
  .rodata.MenuTraining_new.str1.1
-                0x0000000008006247      0x101 Core/Src/main.o
+                0x0000000008006203      0x101 Core/Src/main.o
                                         0x10d (size before relaxing)
  .rodata.MenuSwing.str1.1
-                0x0000000008006348        0x8 Core/Src/main.o
+                0x0000000008006304        0x8 Core/Src/main.o
                                           0xb (size before relaxing)
  .rodata.MenuChargeCC_CV.str1.1
-                0x0000000008006350       0x25 Core/Src/main.o
+                0x000000000800630c       0x25 Core/Src/main.o
  .rodata.MenuChargeAdapt.str1.1
-                0x0000000008006375        0x9 Core/Src/main.o
+                0x0000000008006331        0x9 Core/Src/main.o
  .rodata.MenuDisCharge.str1.1
-                0x000000000800637e        0xc Core/Src/main.o
+                0x000000000800633a        0xc Core/Src/main.o
                                           0xf (size before relaxing)
  .rodata.MenuDIAGNOSTIC.str1.1
-                0x000000000800638a       0x33 Core/Src/main.o
-                                         0x50 (size before relaxing)
+                0x0000000008006346       0x2e Core/Src/main.o
+                                         0x4b (size before relaxing)
  .rodata.main.str1.1
-                0x00000000080063bd       0x37 Core/Src/main.o
+                0x0000000008006374       0x37 Core/Src/main.o
                                          0x59 (size before relaxing)
+ *fill*         0x00000000080063ab        0x1 
  .rodata.Menu_1
-                0x00000000080063f4       0x29 Core/Src/main.o
-                0x00000000080063f4                Menu_1
- *fill*         0x000000000800641d        0x3 
+                0x00000000080063ac       0x29 Core/Src/main.o
+                0x00000000080063ac                Menu_1
+ *fill*         0x00000000080063d5        0x3 
  .rodata.Menu_10
-                0x0000000008006420       0x29 Core/Src/main.o
-                0x0000000008006420                Menu_10
- *fill*         0x0000000008006449        0x3 
+                0x00000000080063d8       0x29 Core/Src/main.o
+                0x00000000080063d8                Menu_10
+ *fill*         0x0000000008006401        0x3 
  .rodata.Menu_10_1
-                0x000000000800644c       0x29 Core/Src/main.o
-                0x000000000800644c                Menu_10_1
- *fill*         0x0000000008006475        0x3 
+                0x0000000008006404       0x29 Core/Src/main.o
+                0x0000000008006404                Menu_10_1
+ *fill*         0x000000000800642d        0x3 
  .rodata.Menu_10_10
-                0x0000000008006478       0x29 Core/Src/main.o
-                0x0000000008006478                Menu_10_10
- *fill*         0x00000000080064a1        0x3 
+                0x0000000008006430       0x29 Core/Src/main.o
+                0x0000000008006430                Menu_10_10
+ *fill*         0x0000000008006459        0x3 
  .rodata.Menu_10_1_1
-                0x00000000080064a4       0x29 Core/Src/main.o
-                0x00000000080064a4                Menu_10_1_1
- *fill*         0x00000000080064cd        0x3 
+                0x000000000800645c       0x29 Core/Src/main.o
+                0x000000000800645c                Menu_10_1_1
+ *fill*         0x0000000008006485        0x3 
  .rodata.Menu_10_2
-                0x00000000080064d0       0x29 Core/Src/main.o
-                0x00000000080064d0                Menu_10_2
- *fill*         0x00000000080064f9        0x3 
+                0x0000000008006488       0x29 Core/Src/main.o
+                0x0000000008006488                Menu_10_2
+ *fill*         0x00000000080064b1        0x3 
  .rodata.Menu_10_2_1
-                0x00000000080064fc       0x29 Core/Src/main.o
-                0x00000000080064fc                Menu_10_2_1
- *fill*         0x0000000008006525        0x3 
+                0x00000000080064b4       0x29 Core/Src/main.o
+                0x00000000080064b4                Menu_10_2_1
+ *fill*         0x00000000080064dd        0x3 
  .rodata.Menu_10_3
-                0x0000000008006528       0x29 Core/Src/main.o
-                0x0000000008006528                Menu_10_3
- *fill*         0x0000000008006551        0x3 
+                0x00000000080064e0       0x29 Core/Src/main.o
+                0x00000000080064e0                Menu_10_3
+ *fill*         0x0000000008006509        0x3 
  .rodata.Menu_10_3_1
-                0x0000000008006554       0x29 Core/Src/main.o
-                0x0000000008006554                Menu_10_3_1
- *fill*         0x000000000800657d        0x3 
+                0x000000000800650c       0x29 Core/Src/main.o
+                0x000000000800650c                Menu_10_3_1
+ *fill*         0x0000000008006535        0x3 
  .rodata.Menu_10_4
-                0x0000000008006580       0x29 Core/Src/main.o
-                0x0000000008006580                Menu_10_4
- *fill*         0x00000000080065a9        0x3 
+                0x0000000008006538       0x29 Core/Src/main.o
+                0x0000000008006538                Menu_10_4
+ *fill*         0x0000000008006561        0x3 
  .rodata.Menu_10_4_1
-                0x00000000080065ac       0x29 Core/Src/main.o
-                0x00000000080065ac                Menu_10_4_1
- *fill*         0x00000000080065d5        0x3 
+                0x0000000008006564       0x29 Core/Src/main.o
+                0x0000000008006564                Menu_10_4_1
+ *fill*         0x000000000800658d        0x3 
  .rodata.Menu_10_5
-                0x00000000080065d8       0x29 Core/Src/main.o
-                0x00000000080065d8                Menu_10_5
- *fill*         0x0000000008006601        0x3 
+                0x0000000008006590       0x29 Core/Src/main.o
+                0x0000000008006590                Menu_10_5
+ *fill*         0x00000000080065b9        0x3 
  .rodata.Menu_10_5_1
-                0x0000000008006604       0x29 Core/Src/main.o
-                0x0000000008006604                Menu_10_5_1
- *fill*         0x000000000800662d        0x3 
+                0x00000000080065bc       0x29 Core/Src/main.o
+                0x00000000080065bc                Menu_10_5_1
+ *fill*         0x00000000080065e5        0x3 
  .rodata.Menu_10_6
-                0x0000000008006630       0x29 Core/Src/main.o
-                0x0000000008006630                Menu_10_6
- *fill*         0x0000000008006659        0x3 
+                0x00000000080065e8       0x29 Core/Src/main.o
+                0x00000000080065e8                Menu_10_6
+ *fill*         0x0000000008006611        0x3 
  .rodata.Menu_10_6_1
-                0x000000000800665c       0x29 Core/Src/main.o
-                0x000000000800665c                Menu_10_6_1
- *fill*         0x0000000008006685        0x3 
+                0x0000000008006614       0x29 Core/Src/main.o
+                0x0000000008006614                Menu_10_6_1
+ *fill*         0x000000000800663d        0x3 
  .rodata.Menu_10_7
-                0x0000000008006688       0x29 Core/Src/main.o
-                0x0000000008006688                Menu_10_7
- *fill*         0x00000000080066b1        0x3 
+                0x0000000008006640       0x29 Core/Src/main.o
+                0x0000000008006640                Menu_10_7
+ *fill*         0x0000000008006669        0x3 
  .rodata.Menu_10_7_1
-                0x00000000080066b4       0x19 Core/Src/main.o
-                0x00000000080066b4                Menu_10_7_1
- *fill*         0x00000000080066cd        0x3 
+                0x000000000800666c       0x19 Core/Src/main.o
+                0x000000000800666c                Menu_10_7_1
+ *fill*         0x0000000008006685        0x3 
  .rodata.Menu_10_8
-                0x00000000080066d0       0x29 Core/Src/main.o
-                0x00000000080066d0                Menu_10_8
- *fill*         0x00000000080066f9        0x3 
+                0x0000000008006688       0x29 Core/Src/main.o
+                0x0000000008006688                Menu_10_8
+ *fill*         0x00000000080066b1        0x3 
  .rodata.Menu_10_8_1
-                0x00000000080066fc       0x19 Core/Src/main.o
-                0x00000000080066fc                Menu_10_8_1
- *fill*         0x0000000008006715        0x3 
+                0x00000000080066b4       0x19 Core/Src/main.o
+                0x00000000080066b4                Menu_10_8_1
+ *fill*         0x00000000080066cd        0x3 
  .rodata.Menu_10_9
-                0x0000000008006718       0x29 Core/Src/main.o
-                0x0000000008006718                Menu_10_9
- *fill*         0x0000000008006741        0x3 
+                0x00000000080066d0       0x29 Core/Src/main.o
+                0x00000000080066d0                Menu_10_9
+ *fill*         0x00000000080066f9        0x3 
  .rodata.Menu_10_9_1
-                0x0000000008006744       0x19 Core/Src/main.o
-                0x0000000008006744                Menu_10_9_1
- *fill*         0x000000000800675d        0x3 
+                0x00000000080066fc       0x19 Core/Src/main.o
+                0x00000000080066fc                Menu_10_9_1
+ *fill*         0x0000000008006715        0x3 
  .rodata.Menu_11
-                0x0000000008006760       0x29 Core/Src/main.o
-                0x0000000008006760                Menu_11
- *fill*         0x0000000008006789        0x3 
+                0x0000000008006718       0x29 Core/Src/main.o
+                0x0000000008006718                Menu_11
+ *fill*         0x0000000008006741        0x3 
  .rodata.Menu_11_1
-                0x000000000800678c       0x29 Core/Src/main.o
-                0x000000000800678c                Menu_11_1
- *fill*         0x00000000080067b5        0x3 
+                0x0000000008006744       0x29 Core/Src/main.o
+                0x0000000008006744                Menu_11_1
+ *fill*         0x000000000800676d        0x3 
  .rodata.Menu_1_1
-                0x00000000080067b8       0x29 Core/Src/main.o
-                0x00000000080067b8                Menu_1_1
- *fill*         0x00000000080067e1        0x3 
+                0x0000000008006770       0x29 Core/Src/main.o
+                0x0000000008006770                Menu_1_1
+ *fill*         0x0000000008006799        0x3 
  .rodata.Menu_1_1_1
-                0x00000000080067e4       0x29 Core/Src/main.o
-                0x00000000080067e4                Menu_1_1_1
- *fill*         0x000000000800680d        0x3 
+                0x000000000800679c       0x29 Core/Src/main.o
+                0x000000000800679c                Menu_1_1_1
+ *fill*         0x00000000080067c5        0x3 
  .rodata.Menu_1_1_1a
-                0x0000000008006810       0x29 Core/Src/main.o
-                0x0000000008006810                Menu_1_1_1a
- *fill*         0x0000000008006839        0x3 
+                0x00000000080067c8       0x29 Core/Src/main.o
+                0x00000000080067c8                Menu_1_1_1a
+ *fill*         0x00000000080067f1        0x3 
  .rodata.Menu_1_1a
-                0x000000000800683c       0x29 Core/Src/main.o
-                0x000000000800683c                Menu_1_1a
- *fill*         0x0000000008006865        0x3 
+                0x00000000080067f4       0x29 Core/Src/main.o
+                0x00000000080067f4                Menu_1_1a
+ *fill*         0x000000000800681d        0x3 
  .rodata.Menu_1_2
-                0x0000000008006868       0x29 Core/Src/main.o
-                0x0000000008006868                Menu_1_2
- *fill*         0x0000000008006891        0x3 
+                0x0000000008006820       0x29 Core/Src/main.o
+                0x0000000008006820                Menu_1_2
+ *fill*         0x0000000008006849        0x3 
  .rodata.Menu_1_2_1
-                0x0000000008006894       0x29 Core/Src/main.o
-                0x0000000008006894                Menu_1_2_1
- *fill*         0x00000000080068bd        0x3 
+                0x000000000800684c       0x29 Core/Src/main.o
+                0x000000000800684c                Menu_1_2_1
+ *fill*         0x0000000008006875        0x3 
  .rodata.Menu_1_3
-                0x00000000080068c0       0x29 Core/Src/main.o
-                0x00000000080068c0                Menu_1_3
- *fill*         0x00000000080068e9        0x3 
+                0x0000000008006878       0x29 Core/Src/main.o
+                0x0000000008006878                Menu_1_3
+ *fill*         0x00000000080068a1        0x3 
  .rodata.Menu_1_3_1
-                0x00000000080068ec       0x29 Core/Src/main.o
-                0x00000000080068ec                Menu_1_3_1
- *fill*         0x0000000008006915        0x3 
+                0x00000000080068a4       0x29 Core/Src/main.o
+                0x00000000080068a4                Menu_1_3_1
+ *fill*         0x00000000080068cd        0x3 
  .rodata.Menu_1_4
-                0x0000000008006918       0x29 Core/Src/main.o
-                0x0000000008006918                Menu_1_4
- *fill*         0x0000000008006941        0x3 
+                0x00000000080068d0       0x29 Core/Src/main.o
+                0x00000000080068d0                Menu_1_4
+ *fill*         0x00000000080068f9        0x3 
  .rodata.Menu_1_4_1
-                0x0000000008006944       0x29 Core/Src/main.o
-                0x0000000008006944                Menu_1_4_1
- *fill*         0x000000000800696d        0x3 
+                0x00000000080068fc       0x29 Core/Src/main.o
+                0x00000000080068fc                Menu_1_4_1
+ *fill*         0x0000000008006925        0x3 
  .rodata.Menu_1_5
-                0x0000000008006970       0x29 Core/Src/main.o
-                0x0000000008006970                Menu_1_5
- *fill*         0x0000000008006999        0x3 
+                0x0000000008006928       0x29 Core/Src/main.o
+                0x0000000008006928                Menu_1_5
+ *fill*         0x0000000008006951        0x3 
  .rodata.Menu_1_5_1
-                0x000000000800699c       0x29 Core/Src/main.o
-                0x000000000800699c                Menu_1_5_1
- *fill*         0x00000000080069c5        0x3 
+                0x0000000008006954       0x29 Core/Src/main.o
+                0x0000000008006954                Menu_1_5_1
+ *fill*         0x000000000800697d        0x3 
  .rodata.Menu_1_6
-                0x00000000080069c8       0x29 Core/Src/main.o
-                0x00000000080069c8                Menu_1_6
- *fill*         0x00000000080069f1        0x3 
+                0x0000000008006980       0x29 Core/Src/main.o
+                0x0000000008006980                Menu_1_6
+ *fill*         0x00000000080069a9        0x3 
  .rodata.Menu_1_6_1
-                0x00000000080069f4       0x29 Core/Src/main.o
-                0x00000000080069f4                Menu_1_6_1
- *fill*         0x0000000008006a1d        0x3 
+                0x00000000080069ac       0x29 Core/Src/main.o
+                0x00000000080069ac                Menu_1_6_1
+ *fill*         0x00000000080069d5        0x3 
  .rodata.Menu_1_7
-                0x0000000008006a20       0x29 Core/Src/main.o
-                0x0000000008006a20                Menu_1_7
- *fill*         0x0000000008006a49        0x3 
+                0x00000000080069d8       0x29 Core/Src/main.o
+                0x00000000080069d8                Menu_1_7
+ *fill*         0x0000000008006a01        0x3 
  .rodata.Menu_1_S
-                0x0000000008006a4c       0x29 Core/Src/main.o
-                0x0000000008006a4c                Menu_1_S
- *fill*         0x0000000008006a75        0x3 
+                0x0000000008006a04       0x29 Core/Src/main.o
+                0x0000000008006a04                Menu_1_S
+ *fill*         0x0000000008006a2d        0x3 
  .rodata.Menu_1_SO
-                0x0000000008006a78       0x29 Core/Src/main.o
-                0x0000000008006a78                Menu_1_SO
- *fill*         0x0000000008006aa1        0x3 
+                0x0000000008006a30       0x29 Core/Src/main.o
+                0x0000000008006a30                Menu_1_SO
+ *fill*         0x0000000008006a59        0x3 
  .rodata.Menu_1_SO_1
-                0x0000000008006aa4       0x29 Core/Src/main.o
-                0x0000000008006aa4                Menu_1_SO_1
- *fill*         0x0000000008006acd        0x3 
+                0x0000000008006a5c       0x29 Core/Src/main.o
+                0x0000000008006a5c                Menu_1_SO_1
+ *fill*         0x0000000008006a85        0x3 
  .rodata.Menu_1_S_1
-                0x0000000008006ad0       0x29 Core/Src/main.o
-                0x0000000008006ad0                Menu_1_S_1
- *fill*         0x0000000008006af9        0x3 
+                0x0000000008006a88       0x29 Core/Src/main.o
+                0x0000000008006a88                Menu_1_S_1
+ *fill*         0x0000000008006ab1        0x3 
  .rodata.Menu_2
-                0x0000000008006afc       0x29 Core/Src/main.o
-                0x0000000008006afc                Menu_2
- *fill*         0x0000000008006b25        0x3 
+                0x0000000008006ab4       0x29 Core/Src/main.o
+                0x0000000008006ab4                Menu_2
+ *fill*         0x0000000008006add        0x3 
  .rodata.Menu_2_1
-                0x0000000008006b28       0x29 Core/Src/main.o
-                0x0000000008006b28                Menu_2_1
- *fill*         0x0000000008006b51        0x3 
+                0x0000000008006ae0       0x29 Core/Src/main.o
+                0x0000000008006ae0                Menu_2_1
+ *fill*         0x0000000008006b09        0x3 
  .rodata.Menu_3
-                0x0000000008006b54       0x29 Core/Src/main.o
-                0x0000000008006b54                Menu_3
- *fill*         0x0000000008006b7d        0x3 
+                0x0000000008006b0c       0x29 Core/Src/main.o
+                0x0000000008006b0c                Menu_3
+ *fill*         0x0000000008006b35        0x3 
  .rodata.Menu_3_1
-                0x0000000008006b80       0x29 Core/Src/main.o
-                0x0000000008006b80                Menu_3_1
- *fill*         0x0000000008006ba9        0x3 
+                0x0000000008006b38       0x29 Core/Src/main.o
+                0x0000000008006b38                Menu_3_1
+ *fill*         0x0000000008006b61        0x3 
  .rodata.Menu_4
-                0x0000000008006bac       0x29 Core/Src/main.o
-                0x0000000008006bac                Menu_4
- *fill*         0x0000000008006bd5        0x3 
+                0x0000000008006b64       0x29 Core/Src/main.o
+                0x0000000008006b64                Menu_4
+ *fill*         0x0000000008006b8d        0x3 
  .rodata.Menu_4_1
-                0x0000000008006bd8       0x29 Core/Src/main.o
-                0x0000000008006bd8                Menu_4_1
- *fill*         0x0000000008006c01        0x3 
+                0x0000000008006b90       0x29 Core/Src/main.o
+                0x0000000008006b90                Menu_4_1
+ *fill*         0x0000000008006bb9        0x3 
  .rodata.Menu_5
-                0x0000000008006c04       0x29 Core/Src/main.o
-                0x0000000008006c04                Menu_5
- *fill*         0x0000000008006c2d        0x3 
+                0x0000000008006bbc       0x29 Core/Src/main.o
+                0x0000000008006bbc                Menu_5
+ *fill*         0x0000000008006be5        0x3 
  .rodata.Menu_5_1
-                0x0000000008006c30       0x29 Core/Src/main.o
-                0x0000000008006c30                Menu_5_1
- *fill*         0x0000000008006c59        0x3 
+                0x0000000008006be8       0x29 Core/Src/main.o
+                0x0000000008006be8                Menu_5_1
+ *fill*         0x0000000008006c11        0x3 
  .rodata.Menu_6
-                0x0000000008006c5c       0x29 Core/Src/main.o
-                0x0000000008006c5c                Menu_6
- *fill*         0x0000000008006c85        0x3 
+                0x0000000008006c14       0x29 Core/Src/main.o
+                0x0000000008006c14                Menu_6
+ *fill*         0x0000000008006c3d        0x3 
  .rodata.Menu_6_1
-                0x0000000008006c88       0x29 Core/Src/main.o
-                0x0000000008006c88                Menu_6_1
- *fill*         0x0000000008006cb1        0x3 
+                0x0000000008006c40       0x29 Core/Src/main.o
+                0x0000000008006c40                Menu_6_1
+ *fill*         0x0000000008006c69        0x3 
  .rodata.Menu_6_1a
-                0x0000000008006cb4       0x29 Core/Src/main.o
-                0x0000000008006cb4                Menu_6_1a
- *fill*         0x0000000008006cdd        0x3 
+                0x0000000008006c6c       0x29 Core/Src/main.o
+                0x0000000008006c6c                Menu_6_1a
+ *fill*         0x0000000008006c95        0x3 
  .rodata.Menu_6a
-                0x0000000008006ce0       0x29 Core/Src/main.o
-                0x0000000008006ce0                Menu_6a
- *fill*         0x0000000008006d09        0x3 
+                0x0000000008006c98       0x29 Core/Src/main.o
+                0x0000000008006c98                Menu_6a
+ *fill*         0x0000000008006cc1        0x3 
  .rodata.Menu_7
-                0x0000000008006d0c       0x29 Core/Src/main.o
-                0x0000000008006d0c                Menu_7
- *fill*         0x0000000008006d35        0x3 
+                0x0000000008006cc4       0x29 Core/Src/main.o
+                0x0000000008006cc4                Menu_7
+ *fill*         0x0000000008006ced        0x3 
  .rodata.Menu_7_1
-                0x0000000008006d38       0x29 Core/Src/main.o
-                0x0000000008006d38                Menu_7_1
- *fill*         0x0000000008006d61        0x3 
+                0x0000000008006cf0       0x29 Core/Src/main.o
+                0x0000000008006cf0                Menu_7_1
+ *fill*         0x0000000008006d19        0x3 
  .rodata.Menu_8
-                0x0000000008006d64       0x29 Core/Src/main.o
-                0x0000000008006d64                Menu_8
- *fill*         0x0000000008006d8d        0x3 
+                0x0000000008006d1c       0x29 Core/Src/main.o
+                0x0000000008006d1c                Menu_8
+ *fill*         0x0000000008006d45        0x3 
  .rodata.Menu_8_1
-                0x0000000008006d90       0x29 Core/Src/main.o
-                0x0000000008006d90                Menu_8_1
- *fill*         0x0000000008006db9        0x3 
+                0x0000000008006d48       0x29 Core/Src/main.o
+                0x0000000008006d48                Menu_8_1
+ *fill*         0x0000000008006d71        0x3 
  .rodata.Menu_8a
-                0x0000000008006dbc       0x29 Core/Src/main.o
-                0x0000000008006dbc                Menu_8a
- *fill*         0x0000000008006de5        0x3 
+                0x0000000008006d74       0x29 Core/Src/main.o
+                0x0000000008006d74                Menu_8a
+ *fill*         0x0000000008006d9d        0x3 
  .rodata.Menu_8a_1
-                0x0000000008006de8       0x29 Core/Src/main.o
-                0x0000000008006de8                Menu_8a_1
- *fill*         0x0000000008006e11        0x3 
+                0x0000000008006da0       0x29 Core/Src/main.o
+                0x0000000008006da0                Menu_8a_1
+ *fill*         0x0000000008006dc9        0x3 
  .rodata.Menu_9
-                0x0000000008006e14       0x29 Core/Src/main.o
-                0x0000000008006e14                Menu_9
- *fill*         0x0000000008006e3d        0x3 
+                0x0000000008006dcc       0x29 Core/Src/main.o
+                0x0000000008006dcc                Menu_9
+ *fill*         0x0000000008006df5        0x3 
  .rodata.Menu_9_1
-                0x0000000008006e40       0x29 Core/Src/main.o
-                0x0000000008006e40                Menu_9_1
+                0x0000000008006df8       0x29 Core/Src/main.o
+                0x0000000008006df8                Menu_9_1
  .rodata.AHBPrescTable
-                0x0000000008006e69       0x10 Core/Src/system_stm32f1xx.o
-                0x0000000008006e69                AHBPrescTable
+                0x0000000008006e21       0x10 Core/Src/system_stm32f1xx.o
+                0x0000000008006e21                AHBPrescTable
  .rodata.APBPrescTable
-                0x0000000008006e79        0x8 Core/Src/system_stm32f1xx.o
-                0x0000000008006e79                APBPrescTable
-                0x0000000008006e84                . = ALIGN (0x4)
- *fill*         0x0000000008006e81        0x3 
+                0x0000000008006e31        0x8 Core/Src/system_stm32f1xx.o
+                0x0000000008006e31                APBPrescTable
+                0x0000000008006e3c                . = ALIGN (0x4)
+ *fill*         0x0000000008006e39        0x3 
 
-.rel.dyn        0x0000000008006e84        0x0
- .rel.iplt      0x0000000008006e84        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtbegin.o
+.rel.dyn        0x0000000008006e3c        0x0
+ .rel.iplt      0x0000000008006e3c        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtbegin.o
 
-.ARM.extab      0x0000000008006e84        0x0
-                0x0000000008006e84                . = ALIGN (0x4)
+.ARM.extab      0x0000000008006e3c        0x0
+                0x0000000008006e3c                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0000000008006e84                . = ALIGN (0x4)
+                0x0000000008006e3c                . = ALIGN (0x4)
 
-.ARM            0x0000000008006e84        0x0
-                0x0000000008006e84                . = ALIGN (0x4)
-                0x0000000008006e84                __exidx_start = .
+.ARM            0x0000000008006e3c        0x0
+                0x0000000008006e3c                . = ALIGN (0x4)
+                0x0000000008006e3c                __exidx_start = .
  *(.ARM.exidx*)
-                0x0000000008006e84                __exidx_end = .
-                0x0000000008006e84                . = ALIGN (0x4)
+                0x0000000008006e3c                __exidx_end = .
+                0x0000000008006e3c                . = ALIGN (0x4)
 
-.preinit_array  0x0000000008006e84        0x0
-                0x0000000008006e84                . = ALIGN (0x4)
-                0x0000000008006e84                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0000000008006e3c        0x0
+                0x0000000008006e3c                . = ALIGN (0x4)
+                0x0000000008006e3c                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0000000008006e84                PROVIDE (__preinit_array_end = .)
-                0x0000000008006e84                . = ALIGN (0x4)
+                0x0000000008006e3c                PROVIDE (__preinit_array_end = .)
+                0x0000000008006e3c                . = ALIGN (0x4)
 
-.init_array     0x0000000008006e84        0x4
-                0x0000000008006e84                . = ALIGN (0x4)
-                0x0000000008006e84                PROVIDE (__init_array_start = .)
+.init_array     0x0000000008006e3c        0x4
+                0x0000000008006e3c                . = ALIGN (0x4)
+                0x0000000008006e3c                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0000000008006e84        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtbegin.o
-                0x0000000008006e88                PROVIDE (__init_array_end = .)
-                0x0000000008006e88                . = ALIGN (0x4)
+ .init_array    0x0000000008006e3c        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtbegin.o
+                0x0000000008006e40                PROVIDE (__init_array_end = .)
+                0x0000000008006e40                . = ALIGN (0x4)
 
-.fini_array     0x0000000008006e88        0x4
-                0x0000000008006e88                . = ALIGN (0x4)
+.fini_array     0x0000000008006e40        0x4
+                0x0000000008006e40                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0000000008006e88        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtbegin.o
+ .fini_array    0x0000000008006e40        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x0000000008006e8c                . = ALIGN (0x4)
-                0x0000000008006e8c                _sidata = LOADADDR (.data)
+                0x0000000008006e44                . = ALIGN (0x4)
+                0x0000000008006e44                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000      0x290 load address 0x0000000008006e8c
+.data           0x0000000020000000      0x290 load address 0x0000000008006e44
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -2361,7 +2361,7 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .data.OutStateAfterPowerUp
                 0x0000000020000274        0x4 Core/Src/main.o
                 0x0000000020000274                OutStateAfterPowerUp
- .data.ResistanceComp_Voltage.7764
+ .data.ResistanceComp_Voltage.7762
                 0x0000000020000278        0x2 Core/Src/main.o
  .data.Version  0x000000002000027a       0x11 Core/Src/main.o
                 0x000000002000027a                Version
@@ -2372,11 +2372,11 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000020000290                . = ALIGN (0x4)
                 0x0000000020000290                _edata = .
 
-.igot.plt       0x0000000020000290        0x0 load address 0x000000000800711c
+.igot.plt       0x0000000020000290        0x0 load address 0x00000000080070d4
  .igot.plt      0x0000000020000290        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp/crtbegin.o
                 0x0000000020000290                . = ALIGN (0x4)
 
-.bss            0x0000000020000290      0x7a0 load address 0x000000000800711c
+.bss            0x0000000020000290      0x7a0 load address 0x00000000080070d4
                 0x0000000020000290                _sbss = .
                 0x0000000020000290                __bss_start__ = _sbss
  *(.bss)
@@ -2573,7 +2573,7 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000020000a30                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x0000000020000a30      0x600 load address 0x000000000800711c
+                0x0000000020000a30      0x600 load address 0x00000000080070d4
                 0x0000000020000a30                . = ALIGN (0x8)
                 [!provide]                        PROVIDE (end = .)
                 0x0000000020000a30                PROVIDE (_end = .)
@@ -2639,22 +2639,22 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
 LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libm.a
 LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp\libgcc.a
 
-.debug_info     0x0000000000000000    0x11c81
+.debug_info     0x0000000000000000    0x11c74
  .debug_info    0x0000000000000000     0x22db Core/Src/Eeprom.o
  .debug_info    0x00000000000022db     0x117c Core/Src/General.o
  .debug_info    0x0000000000003457      0xc6e Core/Src/Lib.o
  .debug_info    0x00000000000040c5      0x2c9 Core/Src/MicroMenu2_1.o
  .debug_info    0x000000000000438e     0x126e Core/Src/hd44780_driver.o
- .debug_info    0x00000000000055fc     0x809a Core/Src/main.o
- .debug_info    0x000000000000d696      0x9e8 Core/Src/stm32f1xx_it.o
- .debug_info    0x000000000000e07e      0x284 Core/Src/system_stm32f1xx.o
- .debug_info    0x000000000000e302      0xcfb Core/Src/usart.o
- .debug_info    0x000000000000effd       0x22 Core/Startup/startup_stm32f100c8tx.o
- .debug_info    0x000000000000f01f      0xa13 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_adc.o
- .debug_info    0x000000000000fa32      0x95e Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_gpio.o
- .debug_info    0x0000000000010390      0x6f4 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
- .debug_info    0x0000000000010a84      0x870 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usart.o
- .debug_info    0x00000000000112f4      0x98d Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_utils.o
+ .debug_info    0x00000000000055fc     0x808d Core/Src/main.o
+ .debug_info    0x000000000000d689      0x9e8 Core/Src/stm32f1xx_it.o
+ .debug_info    0x000000000000e071      0x284 Core/Src/system_stm32f1xx.o
+ .debug_info    0x000000000000e2f5      0xcfb Core/Src/usart.o
+ .debug_info    0x000000000000eff0       0x22 Core/Startup/startup_stm32f100c8tx.o
+ .debug_info    0x000000000000f012      0xa13 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_adc.o
+ .debug_info    0x000000000000fa25      0x95e Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_gpio.o
+ .debug_info    0x0000000000010383      0x6f4 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
+ .debug_info    0x0000000000010a77      0x870 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usart.o
+ .debug_info    0x00000000000112e7      0x98d Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_utils.o
 
 .debug_abbrev   0x0000000000000000     0x2845
  .debug_abbrev  0x0000000000000000      0x3c3 Core/Src/Eeprom.o
@@ -2720,22 +2720,22 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_aranges
                 0x0000000000000758       0x48 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_utils.o
 
-.debug_ranges   0x0000000000000000      0xed0
+.debug_ranges   0x0000000000000000      0xee0
  .debug_ranges  0x0000000000000000      0x138 Core/Src/Eeprom.o
  .debug_ranges  0x0000000000000138       0x80 Core/Src/General.o
  .debug_ranges  0x00000000000001b8       0xb8 Core/Src/Lib.o
  .debug_ranges  0x0000000000000270       0x40 Core/Src/MicroMenu2_1.o
  .debug_ranges  0x00000000000002b0       0xb8 Core/Src/hd44780_driver.o
- .debug_ranges  0x0000000000000368      0x668 Core/Src/main.o
- .debug_ranges  0x00000000000009d0       0x40 Core/Src/stm32f1xx_it.o
- .debug_ranges  0x0000000000000a10       0x18 Core/Src/system_stm32f1xx.o
- .debug_ranges  0x0000000000000a28       0x68 Core/Src/usart.o
- .debug_ranges  0x0000000000000a90       0x20 Core/Startup/startup_stm32f100c8tx.o
- .debug_ranges  0x0000000000000ab0       0x88 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_adc.o
- .debug_ranges  0x0000000000000b38       0x80 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_gpio.o
- .debug_ranges  0x0000000000000bb8       0xe0 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
- .debug_ranges  0x0000000000000c98       0xb0 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usart.o
- .debug_ranges  0x0000000000000d48      0x188 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_utils.o
+ .debug_ranges  0x0000000000000368      0x678 Core/Src/main.o
+ .debug_ranges  0x00000000000009e0       0x40 Core/Src/stm32f1xx_it.o
+ .debug_ranges  0x0000000000000a20       0x18 Core/Src/system_stm32f1xx.o
+ .debug_ranges  0x0000000000000a38       0x68 Core/Src/usart.o
+ .debug_ranges  0x0000000000000aa0       0x20 Core/Startup/startup_stm32f100c8tx.o
+ .debug_ranges  0x0000000000000ac0       0x88 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_adc.o
+ .debug_ranges  0x0000000000000b48       0x80 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_gpio.o
+ .debug_ranges  0x0000000000000bc8       0xe0 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
+ .debug_ranges  0x0000000000000ca8       0xb0 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usart.o
+ .debug_ranges  0x0000000000000d58      0x188 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_utils.o
 
 .debug_macro    0x0000000000000000     0xc389
  .debug_macro   0x0000000000000000      0x162 Core/Src/Eeprom.o
@@ -2789,22 +2789,22 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_macro   0x000000000000c0ae      0x1b5 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usart.o
  .debug_macro   0x000000000000c263      0x126 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_utils.o
 
-.debug_line     0x0000000000000000     0xb6b1
+.debug_line     0x0000000000000000     0xb6c2
  .debug_line    0x0000000000000000     0x10d2 Core/Src/Eeprom.o
  .debug_line    0x00000000000010d2      0xdd4 Core/Src/General.o
  .debug_line    0x0000000000001ea6      0xfc2 Core/Src/Lib.o
  .debug_line    0x0000000000002e68      0x203 Core/Src/MicroMenu2_1.o
  .debug_line    0x000000000000306b      0xb4a Core/Src/hd44780_driver.o
- .debug_line    0x0000000000003bb5     0x3bc9 Core/Src/main.o
- .debug_line    0x000000000000777e      0x6f3 Core/Src/stm32f1xx_it.o
- .debug_line    0x0000000000007e71      0x4f3 Core/Src/system_stm32f1xx.o
- .debug_line    0x0000000000008364      0xa3c Core/Src/usart.o
- .debug_line    0x0000000000008da0       0x84 Core/Startup/startup_stm32f100c8tx.o
- .debug_line    0x0000000000008e24      0x79f Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_adc.o
- .debug_line    0x00000000000095c3      0x7e3 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_gpio.o
- .debug_line    0x0000000000009da6      0x7fe Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
- .debug_line    0x000000000000a5a4      0x799 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usart.o
- .debug_line    0x000000000000ad3d      0x974 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_utils.o
+ .debug_line    0x0000000000003bb5     0x3bda Core/Src/main.o
+ .debug_line    0x000000000000778f      0x6f3 Core/Src/stm32f1xx_it.o
+ .debug_line    0x0000000000007e82      0x4f3 Core/Src/system_stm32f1xx.o
+ .debug_line    0x0000000000008375      0xa3c Core/Src/usart.o
+ .debug_line    0x0000000000008db1       0x84 Core/Startup/startup_stm32f100c8tx.o
+ .debug_line    0x0000000000008e35      0x79f Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_adc.o
+ .debug_line    0x00000000000095d4      0x7e3 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_gpio.o
+ .debug_line    0x0000000000009db7      0x7fe Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.o
+ .debug_line    0x000000000000a5b5      0x799 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usart.o
+ .debug_line    0x000000000000ad4e      0x974 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_utils.o
 
 .debug_str      0x0000000000000000    0x43e98
  .debug_str     0x0000000000000000    0x3942e Core/Src/Eeprom.o
@@ -2818,7 +2818,7 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_str     0x0000000000039d24      0x1d7 Core/Src/hd44780_driver.o
                                       0x39533 (size before relaxing)
  .debug_str     0x0000000000039efb     0x6ff9 Core/Src/main.o
-                                      0x40dcf (size before relaxing)
+                                      0x40dc0 (size before relaxing)
  .debug_str     0x0000000000040ef4       0xe8 Core/Src/stm32f1xx_it.o
                                       0x3ebec (size before relaxing)
  .debug_str     0x0000000000040fdc       0x4a Core/Src/system_stm32f1xx.o
