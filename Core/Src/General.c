@@ -184,6 +184,18 @@ volatile uint16_t U_OUT_ForSetResistance=0;
 volatile int16_t Current_load = 0;
 volatile int16_t Current_Out = 0;
 
+
+
+volatile int32_t Current_mkA = 0;
+volatile int32_t Current_mA = 0;
+volatile int32_t Current = 0;
+volatile uint8_t resistor01 = 1;
+volatile int32_t CurrentTimer = 0;
+volatile int32_t CurrentTimerCap = 0;
+volatile uint32_t CurrentSum=0;
+volatile uint32_t CurrentSumCap = 0;
+volatile uint32_t CurrentCapacity5ms = 0;
+
 struct StructTemperatureLinearTable T_Table []=
 {
 		{1,31000},
@@ -375,8 +387,8 @@ void InfoToUARTBeforeStart(void)
 	logInfoD("CRC(Calibration) =",CalibrationData.CRC_data,0);
 	logInfoD("Calibration0ValueForCurrent =",CalibrationData.Calibration0ValueForCurrent ,0);
 	logInfoD("Calibration0ValueForCurrent1 =",CalibrationData.Calibration0ValueForCurrent1 ,0);
-	logInfoD("CalibrationValueForCurrent =",CalibrationData.CalibrationValueForCurrent ,0);
-	logInfoD("CalibrationValueForCurrent1 =",CalibrationData.CalibrationValueForCurrent1 ,0);
+	logInfoD("CalibrationValueForCurrent =",CalibrationData.CalibrationForCurrent_mA1 ,0);
+	logInfoD("CalibrationValueForCurrent1 =",CalibrationData.CalibrationForCurrent_mkA1 ,0);
 	logInfoD("CalibrationValueForVoltage =",CalibrationData.CalibrationValueForVoltage ,0);
 	logInfoD("CalibrationValueForVoltage1 =",CalibrationData.CalibrationValueForVoltage1 ,0);
 	logInfoD("CalibrationValueForVoltage2 =",CalibrationData.CalibrationValueForVoltage2 ,0);
@@ -395,8 +407,8 @@ void InfoToUARTBeforeStart(void)
 	delay_ms(50);
 
 	logInfoD("CRC(SaveDataWhenPowerOff) =",SaveDataWhenPowerOff.CRC_data,0);
-	logInfoD("BatteryCapacityDischargePreviousValue =",SaveDataWhenPowerOff.BatteryCapacityDischargePreviousValue ,0);
-	logInfoD("BatteryCapacityDischargeCurrent =",SaveDataWhenPowerOff.BatteryCapacityDischargeCurrent ,0);
+	logInfoD("BatteryCapacityDischargePreviousValue =",SaveDataWhenPowerOff.CurrentConsumption5ms ,0);
+	logInfoD("BatteryCapacityDischargeCurrent =",SaveDataWhenPowerOff.CurrentConsumption1s ,0);
 	logInfoD("OutState = ",SaveDataWhenPowerOff.OutState ,0);
 
 	logInfoD("SystemCoreClock: ", SystemCoreClock, 0);

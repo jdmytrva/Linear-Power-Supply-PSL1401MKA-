@@ -36,9 +36,20 @@ volatile uint16_t U_PS;
 volatile uint16_t U_IN;
 volatile uint16_t U_Controller;
 volatile uint16_t U_12V;
-volatile int16_t Current;
 
 
+volatile uint16_t U_OUT_ForSetResistance;
+volatile int16_t Current_RAW;
+volatile int32_t Current_mkA ;
+volatile int32_t Current_mA ;
+volatile int32_t Current;
+volatile uint8_t resistor01;
+
+volatile int32_t CurrentTimer;
+volatile int32_t CurrentTimerCap;
+volatile uint32_t CurrentSum;
+volatile uint32_t CurrentSumCap;
+volatile uint32_t CurrentCapacity5ms;
 
 
 
@@ -58,10 +69,10 @@ struct StructCalibrationValuetoSaveInFlash
 	uint32_t Calibration0ValueForCurrent1;
 	uint32_t Calibration0ValueForCurrent1_AddresInEEprom;
 
-	uint32_t CalibrationValueForCurrent;
+	uint32_t CalibrationForCurrent_mA1;
 	uint32_t CalibrationValueForCurrent_AddresInEEprom;
 
-	uint32_t CalibrationValueForCurrent1;
+	uint32_t CalibrationForCurrent_mkA1;
 	uint32_t CalibrationValueForCurrent1_AddresInEEprom;
 
 	uint32_t CalibrationValueForVoltage;
@@ -115,10 +126,10 @@ struct StructValuetoSaveInFlashWhenPowerOFF
 	uint32_t CRC_data;
 	uint32_t CRC_AddresInEEprom;
 
-	uint32_t BatteryCapacityDischargePreviousValue;
+	uint32_t CurrentConsumption5ms;
 	uint32_t BatteryCapacityDischargePrevious_AddresInEEprom;
 
-	uint32_t BatteryCapacityDischargeCurrent;
+	uint32_t CurrentConsumption1s;
 	uint32_t BatteryCapacityDischargeCurrent_AddresInEEprom;
 
 	uint32_t OutState;
