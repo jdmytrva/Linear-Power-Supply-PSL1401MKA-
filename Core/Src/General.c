@@ -56,15 +56,15 @@ struct StructCalibrationValuetoSaveInFlash CalibrationDataFactory=
 {
 		0,//CRC
 		ADDRESS_FLASH_CALIBRATTION,
-		0,//Calibration0ValueForCurrent
+		120,//CalibrationForCurrent_1k
 		ADDRESS_FLASH_CALIBRATTION+4,
-		0,//Calibration0ValueForCurrent1
+		893,//CalibrationForCurrent_100R
 		ADDRESS_FLASH_CALIBRATTION+8,
-		141,//CalibrationValueForCurrent Resistor 6.2k || 4.7k  1%
+		891,//CalibrationForCurrent_10R
 		ADDRESS_FLASH_CALIBRATTION+12,
-		141,//CalibrationValueForCurrent1 Resistor 6.2k || 4.7k  1%
+		398,//CalibrationForCurrent_1R
 		ADDRESS_FLASH_CALIBRATTION+16,
-		1109,//CalibrationValueForVoltage Resistor 8.2k 1%
+		567,//CalibrationValueForVoltage
 		ADDRESS_FLASH_CALIBRATTION+20,
 		1109,//CalibrationValueForVoltage1 Resistor 8.2k 1%
 		ADDRESS_FLASH_CALIBRATTION+24,
@@ -185,11 +185,13 @@ volatile int16_t Current_load = 0;
 volatile int16_t Current_Out = 0;
 
 
-
-volatile int32_t Current_mkA = 0;
-volatile int32_t Current_mA = 0;
+volatile uint16_t U_PS = 0;
+volatile int32_t Current_1k = 0;
+volatile int32_t Current_100R = 0;
+volatile int32_t Current_10R = 0;
+volatile int32_t Current_1R = 0;
 volatile int32_t Current = 0;
-volatile uint8_t resistor01 = 1;
+
 volatile int32_t CurrentTimer = 0;
 volatile int32_t CurrentTimerCap = 0;
 volatile uint32_t CurrentSum=0;
@@ -385,10 +387,10 @@ void InfoToUARTBeforeStart(void)
 {
 
 	logInfoD("CRC(Calibration) =",CalibrationData.CRC_data,0);
-	logInfoD("Calibration0ValueForCurrent =",CalibrationData.Calibration0ValueForCurrent ,0);
-	logInfoD("Calibration0ValueForCurrent1 =",CalibrationData.Calibration0ValueForCurrent1 ,0);
-	logInfoD("CalibrationValueForCurrent =",CalibrationData.CalibrationForCurrent_mA1 ,0);
-	logInfoD("CalibrationValueForCurrent1 =",CalibrationData.CalibrationForCurrent_mkA1 ,0);
+	logInfoD("Calibration0ValueForCurrent =",CalibrationData.CalibrationForCurrent_1k ,0);
+	logInfoD("Calibration0ValueForCurrent1 =",CalibrationData.CalibrationForCurrent_100R ,0);
+	logInfoD("CalibrationValueForCurrent =",CalibrationData.CalibrationForCurrent_10R ,0);
+	logInfoD("CalibrationValueForCurrent1 =",CalibrationData.CalibrationForCurrent_1R ,0);
 	logInfoD("CalibrationValueForVoltage =",CalibrationData.CalibrationValueForVoltage ,0);
 	logInfoD("CalibrationValueForVoltage1 =",CalibrationData.CalibrationValueForVoltage1 ,0);
 	logInfoD("CalibrationValueForVoltage2 =",CalibrationData.CalibrationValueForVoltage2 ,0);

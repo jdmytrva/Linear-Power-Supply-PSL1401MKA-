@@ -294,10 +294,10 @@ uint8_t CalibrationWriteToFlash(void)
 {
 	flash_erase_page( CalibrationData.CRC_AddresInEEprom);
 	flash_write( CalibrationData.CRC_AddresInEEprom, CalibrationData.CRC_data);
-	flash_write( CalibrationData.Calibration0ValueForCurrent_AddresInEEprom, CalibrationData.Calibration0ValueForCurrent);
-	flash_write( CalibrationData.Calibration0ValueForCurrent1_AddresInEEprom, CalibrationData.Calibration0ValueForCurrent1);
-	flash_write( CalibrationData.CalibrationValueForCurrent_AddresInEEprom, CalibrationData.CalibrationForCurrent_mA1);
-	flash_write( CalibrationData.CalibrationValueForCurrent1_AddresInEEprom, CalibrationData.CalibrationForCurrent_mkA1);
+	flash_write( CalibrationData.CalibrationForCurrent_1k_AddresInEEprom, CalibrationData.CalibrationForCurrent_1k);
+	flash_write( CalibrationData.CalibrationForCurrent_100R_AddresInEEprom, CalibrationData.CalibrationForCurrent_100R);
+	flash_write( CalibrationData.CalibrationForCurrent_10R_AddresInEEprom, CalibrationData.CalibrationForCurrent_10R);
+	flash_write( CalibrationData.CalibrationForCurrent_1R_AddresInEEprom, CalibrationData.CalibrationForCurrent_1R);
 	flash_write( CalibrationData.CalibrationValueForVoltage_AddresInEEprom, CalibrationData.CalibrationValueForVoltage);
 	flash_write( CalibrationData.CalibrationValueForVoltage1_AddresInEEprom, CalibrationData.CalibrationValueForVoltage1);
 	flash_write( CalibrationData.CalibrationValueForVoltage2_AddresInEEprom, CalibrationData.CalibrationValueForVoltage2);
@@ -310,10 +310,10 @@ uint8_t CalibrationFactoryWriteToFlash(void)
 {
 	flash_erase_page( CalibrationDataFactory.CRC_AddresInEEprom);
 	flash_write( CalibrationDataFactory.CRC_AddresInEEprom, CalibrationDataFactory.CRC_data);
-	flash_write( CalibrationDataFactory.Calibration0ValueForCurrent_AddresInEEprom, CalibrationDataFactory.Calibration0ValueForCurrent);
-	flash_write( CalibrationDataFactory.Calibration0ValueForCurrent1_AddresInEEprom, CalibrationDataFactory.Calibration0ValueForCurrent1);
-	flash_write( CalibrationDataFactory.CalibrationValueForCurrent_AddresInEEprom, CalibrationDataFactory.CalibrationForCurrent_mA1);
-	flash_write( CalibrationDataFactory.CalibrationValueForCurrent1_AddresInEEprom, CalibrationDataFactory.CalibrationForCurrent_mkA1);
+	flash_write( CalibrationDataFactory.CalibrationForCurrent_1k_AddresInEEprom, CalibrationDataFactory.CalibrationForCurrent_1k);
+	flash_write( CalibrationDataFactory.CalibrationForCurrent_100R_AddresInEEprom, CalibrationDataFactory.CalibrationForCurrent_100R);
+	flash_write( CalibrationDataFactory.CalibrationForCurrent_10R_AddresInEEprom, CalibrationDataFactory.CalibrationForCurrent_10R);
+	flash_write( CalibrationDataFactory.CalibrationForCurrent_1R_AddresInEEprom, CalibrationDataFactory.CalibrationForCurrent_1R);
 	flash_write( CalibrationDataFactory.CalibrationValueForVoltage_AddresInEEprom, CalibrationDataFactory.CalibrationValueForVoltage);
 	flash_write( CalibrationDataFactory.CalibrationValueForVoltage1_AddresInEEprom, CalibrationDataFactory.CalibrationValueForVoltage1);
 	flash_write( CalibrationDataFactory.CalibrationValueForVoltage2_AddresInEEprom, CalibrationDataFactory.CalibrationValueForVoltage2);
@@ -324,10 +324,10 @@ uint8_t CalibrationFactoryWriteToFlash(void)
 uint8_t CalibrationReadFromFlash(void)
 {
 	CalibrationData.CRC_data = flash_read(CalibrationData.CRC_AddresInEEprom,0,256);
-	CalibrationData.Calibration0ValueForCurrent = flash_read(CalibrationData.Calibration0ValueForCurrent_AddresInEEprom,0,1000);
-	CalibrationData.Calibration0ValueForCurrent1 = flash_read(CalibrationData.Calibration0ValueForCurrent1_AddresInEEprom,0,1000);
-	CalibrationData.CalibrationForCurrent_mA1 = flash_read(CalibrationData.CalibrationValueForCurrent_AddresInEEprom,10,100000);
-	CalibrationData.CalibrationForCurrent_mkA1 = flash_read(CalibrationData.CalibrationValueForCurrent1_AddresInEEprom,10,100000);
+	CalibrationData.CalibrationForCurrent_1k = flash_read(CalibrationData.CalibrationForCurrent_1k_AddresInEEprom,0,1000);
+	CalibrationData.CalibrationForCurrent_100R = flash_read(CalibrationData.CalibrationForCurrent_100R_AddresInEEprom,0,1000);
+	CalibrationData.CalibrationForCurrent_10R = flash_read(CalibrationData.CalibrationForCurrent_10R_AddresInEEprom,10,100000);
+	CalibrationData.CalibrationForCurrent_1R = flash_read(CalibrationData.CalibrationForCurrent_1R_AddresInEEprom,10,100000);
 	CalibrationData.CalibrationValueForVoltage = flash_read(CalibrationData.CalibrationValueForVoltage_AddresInEEprom,10,100000);
 	CalibrationData.CalibrationValueForVoltage1 = flash_read(CalibrationData.CalibrationValueForVoltage1_AddresInEEprom,10,100000);
 	CalibrationData.CalibrationValueForVoltage2 = flash_read(CalibrationData.CalibrationValueForVoltage2_AddresInEEprom,10,100000);
@@ -338,10 +338,10 @@ uint8_t CalibrationReadFromFlash(void)
 uint8_t CalibrationReadFromFlashForVerify(void)
 {
 	CalibrationDataForVerify.CRC_data = flash_read(CalibrationDataForVerify.CRC_AddresInEEprom,0,256);
-	CalibrationDataForVerify.Calibration0ValueForCurrent = flash_read(CalibrationDataForVerify.Calibration0ValueForCurrent_AddresInEEprom,0,1000);
-	CalibrationDataForVerify.Calibration0ValueForCurrent1 = flash_read(CalibrationDataForVerify.Calibration0ValueForCurrent1_AddresInEEprom,0,1000);
-	CalibrationDataForVerify.CalibrationForCurrent_mA1 = flash_read(CalibrationDataForVerify.CalibrationValueForCurrent_AddresInEEprom,10,100000);
-	CalibrationDataForVerify.CalibrationForCurrent_mkA1 = flash_read(CalibrationDataForVerify.CalibrationValueForCurrent1_AddresInEEprom,10,100000);
+	CalibrationDataForVerify.CalibrationForCurrent_1k = flash_read(CalibrationDataForVerify.CalibrationForCurrent_1k_AddresInEEprom,0,1000);
+	CalibrationDataForVerify.CalibrationForCurrent_100R = flash_read(CalibrationDataForVerify.CalibrationForCurrent_100R_AddresInEEprom,0,1000);
+	CalibrationDataForVerify.CalibrationForCurrent_10R = flash_read(CalibrationDataForVerify.CalibrationForCurrent_10R_AddresInEEprom,10,100000);
+	CalibrationDataForVerify.CalibrationForCurrent_1R = flash_read(CalibrationDataForVerify.CalibrationForCurrent_1R_AddresInEEprom,10,100000);
 	CalibrationDataForVerify.CalibrationValueForVoltage = flash_read(CalibrationDataForVerify.CalibrationValueForVoltage_AddresInEEprom,10,100000);
 	CalibrationDataForVerify.CalibrationValueForVoltage1 = flash_read(CalibrationDataForVerify.CalibrationValueForVoltage1_AddresInEEprom,10,100000);
 	CalibrationDataForVerify.CalibrationValueForVoltage2 = flash_read(CalibrationDataForVerify.CalibrationValueForVoltage2_AddresInEEprom,10,100000);

@@ -31,19 +31,36 @@
 #define NUMBER_OF_CHANNELS 8
 __IO uint16_t RegularConvData[NUMBER_OF_CHANNELS] ;
 
+
+//ADC
+
+volatile int16_t Current_load ;
+volatile int16_t Current_Out ;
+volatile int32_t Temperature;
+volatile int32_t Rt;
+
+volatile uint16_t  Count100mSecond;
+volatile uint16_t  Count10mSecond;
+volatile uint16_t  Count1000mSecond;
+volatile uint16_t  CountAnymSecond;
+volatile uint32_t  Seconds;
+
 volatile uint16_t U_OUT;
-volatile uint16_t U_PS;
+
 volatile uint16_t U_IN;
 volatile uint16_t U_Controller;
 volatile uint16_t U_12V;
 
 
 volatile uint16_t U_OUT_ForSetResistance;
-volatile int16_t Current_RAW;
-volatile int32_t Current_mkA ;
-volatile int32_t Current_mA ;
+
+volatile uint16_t U_PS;
+volatile int32_t Current_1k ;
+volatile int32_t Current_100R ;
+volatile int32_t Current_10R;
+volatile int32_t Current_1R;
 volatile int32_t Current;
-volatile uint8_t resistor01;
+
 
 volatile int32_t CurrentTimer;
 volatile int32_t CurrentTimerCap;
@@ -63,17 +80,17 @@ struct StructCalibrationValuetoSaveInFlash
 	uint32_t CRC_data;
 	uint32_t CRC_AddresInEEprom;
 
-	uint32_t Calibration0ValueForCurrent;
-	uint32_t Calibration0ValueForCurrent_AddresInEEprom;
+	uint32_t CalibrationForCurrent_1k;
+	uint32_t CalibrationForCurrent_1k_AddresInEEprom;
 
-	uint32_t Calibration0ValueForCurrent1;
-	uint32_t Calibration0ValueForCurrent1_AddresInEEprom;
+	uint32_t CalibrationForCurrent_100R;
+	uint32_t CalibrationForCurrent_100R_AddresInEEprom;
 
-	uint32_t CalibrationForCurrent_mA1;
-	uint32_t CalibrationValueForCurrent_AddresInEEprom;
+	uint32_t CalibrationForCurrent_10R;
+	uint32_t CalibrationForCurrent_10R_AddresInEEprom;
 
-	uint32_t CalibrationForCurrent_mkA1;
-	uint32_t CalibrationValueForCurrent1_AddresInEEprom;
+	uint32_t CalibrationForCurrent_1R;
+	uint32_t CalibrationForCurrent_1R_AddresInEEprom;
 
 	uint32_t CalibrationValueForVoltage;
 	uint32_t CalibrationValueForVoltage_AddresInEEprom;
@@ -150,19 +167,6 @@ struct StructValuetoSaveInFlashWhenPowerOFF SaveDataWhenPowerOffForVerify;
 struct StructValuetoSaveInFlashWhenPowerOFF SaveDataWhenPowerOffFactory;
 
 
-//ADC
-volatile uint16_t U_OUT_ForSetResistance;
-volatile int16_t Current_RAW;
-volatile int16_t Current_load ;
-volatile int16_t Current_Out ;
-volatile int32_t Temperature;
-volatile int32_t Rt;
-
-volatile uint16_t  Count100mSecond;
-volatile uint16_t  Count10mSecond;
-volatile uint16_t  Count1000mSecond;
-volatile uint16_t  CountAnymSecond;
-volatile uint32_t  Seconds;
 
 struct StructTemperatureLinearTable
 {

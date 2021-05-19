@@ -86,17 +86,18 @@ volatile uint32_t BatteryCapacityDischargeCurrentAfterPOwerUp = 0;
 volatile uint32_t BatteryCapacityCharge = 0;
 int16_t i_LogItems=0;
 
-volatile int32_t SumI1 = 0;
-volatile int32_t SumI2 = 0;
 volatile int32_t SumU1 = 0;
-volatile int32_t SumU2 = 0;
-volatile int32_t SumU3 = 0;
+volatile int32_t SumI1k = 0;
+volatile int32_t SumI100R = 0;
+volatile int32_t SumI10R = 0;
+volatile int32_t SumI1R = 0;
 
-volatile int16_t SumI1Counter = 0;
-volatile int16_t SumI2Counter = 0;
+volatile int16_t SumI1kCounter = 0;
+volatile int16_t SumI100RCounter = 0;
+volatile int16_t SumI10RCounter = 0;
+volatile int16_t SumI1RCounter = 0;
 volatile int16_t SumU1Counter = 0;
-volatile int16_t SumU2Counter = 0;
-volatile int16_t SumU3Counter = 0;
+
 volatile int32_t U_OUTtmp = 0;
 
 volatile uint32_t CurrentConsumption1s = 0;
@@ -1322,8 +1323,7 @@ void MenuLog(Key_Pressed_t key)
 void MenuDIAGNOSTIC(Key_Pressed_t key)
 {
 	EnterInMenu_Status=1;
-
-	//discharge();
+	OUT_ON();
 	#define MAXITEM 8
 	if (key == KEY_NEXT)
 	{
@@ -1351,7 +1351,7 @@ void MenuDIAGNOSTIC(Key_Pressed_t key)
 	{
 		lcd_set_xy(0,0);
 		PrintToLCD("I1r ");
-		PrintToLCD(itoa_koma(U_PS,2));
+		PrintToLCD(itoa(Current_1R));
 		PrintToLCD("mA ");
 		PrintToLCD(itoa((RegularConvData[4])));
 		PrintToLCD("      ");
@@ -1360,7 +1360,7 @@ void MenuDIAGNOSTIC(Key_Pressed_t key)
 	{
 		lcd_set_xy(0,0);
 		PrintToLCD("I10r ");
-		PrintToLCD(itoa_koma(U_OUT,2));
+		PrintToLCD(itoa_koma(Current_10R,2));
 		PrintToLCD("mA ");
 		PrintToLCD(itoa((RegularConvData[3])));
 		PrintToLCD("      ");
@@ -1369,8 +1369,8 @@ void MenuDIAGNOSTIC(Key_Pressed_t key)
 	{
 		lcd_set_xy(0,0);
 		PrintToLCD("I100r ");
-		PrintToLCD(itoa(Current));
-		PrintToLCD("mA ");
+		PrintToLCD(itoa(Current_100R));
+		PrintToLCD("uA ");
 		PrintToLCD(itoa((RegularConvData[1])));
 		PrintToLCD("      ");
 	}
@@ -1378,8 +1378,8 @@ void MenuDIAGNOSTIC(Key_Pressed_t key)
 	{
 		lcd_set_xy(0,0);
 		PrintToLCD("I1k ");
-		PrintToLCD(itoa(Current_load));
-		PrintToLCD("mA ");
+		PrintToLCD(itoa(Current_1k));
+		PrintToLCD("uA ");
 		PrintToLCD(itoa(RegularConvData[0]));
 		PrintToLCD("       ");
 	}
@@ -1387,14 +1387,14 @@ void MenuDIAGNOSTIC(Key_Pressed_t key)
 	{
 		lcd_set_xy(0,0);
 		PrintToLCD("I1k1 ");
-		PrintToLCD(itoa(Current_load));
+		PrintToLCD(itoa_koma(Current_1k,2));
 		PrintToLCD("mA ");
 		PrintToLCD(itoa(RegularConvData[5]));
 		PrintToLCD("       ");
 	}
 	if(CountShow1 == 6)
 	{
-		OFF();
+
 		lcd_set_xy(0,0);
 		char s[17];
 		PrintToLCD(ClockStringWithSec(time_sec,s));
@@ -1412,55 +1412,61 @@ void MenuDIAGNOSTIC(Key_Pressed_t key)
 		PrintToLCD("      ");
 	}
 }
-void MenuCalibration_CURRENT_Out_to_0(Key_Pressed_t key)
-{
-	lcd_set_xy(0,0);
-	PrintToLCD(itoa(Current));
-	PrintToLCD("mA >> set 0   ");
-	if (key == KEY_NEXT)
-	{
-		CalibrationData.Calibration0ValueForCurrent = Current_Out;
-		CalibrationWriteToFlash_CRC();
-	}
-}
-
-void MenuCalibration_CURRENT_Load_to_0(Key_Pressed_t key)
-{
-	lcd_set_xy(0,0);
-	PrintToLCD(	itoa(Current));
-	PrintToLCD("mA >> set 0   ");
-	if (key == KEY_NEXT)
-	{
-		CalibrationData.Calibration0ValueForCurrent1 = Current_load;
-		CalibrationWriteToFlash_CRC();
-	}
-}
-void MenuCalibration_CURRENT_Out(Key_Pressed_t key)
+void MenuCalibration_CURRENT_1k(Key_Pressed_t key)
 {
 	EnterInMenu_Status=1;
 	OUT_ON();
-	if (key == KEY_NEXT) CalibrationData.CalibrationForCurrent_mA1++;
-	if (key == KEY_BACK) CalibrationData.CalibrationForCurrent_mA1--;
+	if (key == KEY_NEXT) CalibrationData.CalibrationForCurrent_1k++;
+	if (key == KEY_BACK) CalibrationData.CalibrationForCurrent_1k--;
 
 	lcd_set_xy(0,0);
-	PrintToLCD(itoa(CalibrationData.CalibrationForCurrent_mA1));
+	PrintToLCD(itoa(CalibrationData.CalibrationForCurrent_1k));
 	PrintToLCD("   ");
 	lcd_set_xy(0,1);
-	PrintToLCD(itoa(Current));
-	PrintToLCD("mA  ");
+	PrintToLCD(itoa(Current_1k));
+	PrintToLCD("uA  ");
 }
-void MenuCalibration_CURRENT_Load(Key_Pressed_t key)
+
+void MenuCalibration_CURRENT_100R(Key_Pressed_t key)
 {
 	EnterInMenu_Status=1;
-	discharge();
-	if (key == KEY_NEXT) CalibrationData.CalibrationForCurrent_mkA1++;
-	if (key == KEY_BACK) CalibrationData.CalibrationForCurrent_mkA1--;
+	OUT_ON();
+	if (key == KEY_NEXT) CalibrationData.CalibrationForCurrent_100R++;
+	if (key == KEY_BACK) CalibrationData.CalibrationForCurrent_100R--;
 
 	lcd_set_xy(0,0);
-	PrintToLCD(itoa(CalibrationData.CalibrationForCurrent_mkA1));
+	PrintToLCD(itoa(CalibrationData.CalibrationForCurrent_100R));
 	PrintToLCD("   ");
 	lcd_set_xy(0,1);
-	PrintToLCD(itoa(Current));
+	PrintToLCD(itoa(Current_100R));
+	PrintToLCD("uA  ");
+}
+void MenuCalibration_CURRENT_10R(Key_Pressed_t key)
+{
+	EnterInMenu_Status=1;
+	OUT_ON();
+	if (key == KEY_NEXT) CalibrationData.CalibrationForCurrent_10R++;
+	if (key == KEY_BACK) CalibrationData.CalibrationForCurrent_10R--;
+
+	lcd_set_xy(0,0);
+	PrintToLCD(itoa(CalibrationData.CalibrationForCurrent_10R));
+	PrintToLCD("   ");
+	lcd_set_xy(0,1);
+	PrintToLCD(itoa_koma(Current_10R,2));
+	PrintToLCD("mA  ");
+}
+void MenuCalibration_CURRENT_1R(Key_Pressed_t key)
+{
+	EnterInMenu_Status=1;
+	OUT_ON();
+	if (key == KEY_NEXT) CalibrationData.CalibrationForCurrent_1R++;
+	if (key == KEY_BACK) CalibrationData.CalibrationForCurrent_1R--;
+
+	lcd_set_xy(0,0);
+	PrintToLCD(itoa(CalibrationData.CalibrationForCurrent_1R));
+	PrintToLCD("   ");
+	lcd_set_xy(0,1);
+	PrintToLCD(itoa(Current_1R));
 	PrintToLCD("mA  ");
 }
 void MenuCalibration_VoltagePS(Key_Pressed_t key)
@@ -2243,8 +2249,8 @@ void adc_func()
 
 
 	U_Controller = 491520 / RegularConvData[7];// Uref V/10;  1200 * 4096/ChVref
-	Ut= (RegularConvData[3] * CalibrationData.CalibrationValueForVoltage) / RegularConvData[7];
-	Ut_m = middle_of_3Umax1(Ut);
+	Ut= (RegularConvData[2] * CalibrationData.CalibrationValueForVoltage) / RegularConvData[7];
+	Ut_m = Ut;//middle_of_3Umax1(Ut);
 	SumU1 =SumU1 + RunningAverageU1(Ut_m);
 	SumU1Counter ++;
 	if (SumU1Counter >= NUM_READ)
@@ -2255,66 +2261,58 @@ void adc_func()
 		if (U_PS < 3) U_PS = 0;
 	}
 
-	Ut = (RegularConvData[2] * CalibrationData.CalibrationValueForVoltage1) / RegularConvData[7];
-	Ut_m = middle_of_3Umax2(Ut);
-	SumU2 = SumU2 + RunningAverageU2(Ut_m);
-	SumU2Counter ++;
-
-
-	Ut = (RegularConvData[4] * CalibrationData.CalibrationValueForVoltage2) / RegularConvData[7];
-	U_IN = middle_of_3Umax3(Ut);
-
-
-	It = (RegularConvData[1] * CalibrationData.CalibrationForCurrent_mA1*10) / RegularConvData[7] ;//  Current A/10
-	It_m = middle_of_3Imax1(It);
-	SumI1 =SumI1 + RunningAverageI1(It_m);
-	SumI1Counter ++;
-	if (SumI1Counter >= NUM_READ)
+	It = (RegularConvData[0] * CalibrationData.CalibrationForCurrent_1k) / RegularConvData[7] ;//  Current A/10
+	It_m =It; //middle_of_3Imax1(It);
+	SumI1k =SumI1k + RunningAverageI1(It_m);
+	SumI1kCounter ++;
+	if (SumI1kCounter >= NUM_READ)
 	{
-		Current_Out = SumI1/NUM_READ;
-		SumI1Counter = 0;
-		SumI1 = 0;
+		Current_1k = SumI1k/NUM_READ;
+		SumI1kCounter = 0;
+		SumI1k = 0;
 	}
 
-	It= (RegularConvData[0] * CalibrationData.CalibrationForCurrent_mkA1*10) / RegularConvData[7] ;//  Current A/10
-	It_m = middle_of_3Imax2(It);
-	SumI2 =SumI2 + RunningAverageI2(It_m);
-	SumI2Counter ++;
-	if (SumI2Counter >= NUM_READ)
+	It= (RegularConvData[1] * CalibrationData.CalibrationForCurrent_100R) / RegularConvData[7] ;//  Current A/10
+	It_m = It;//middle_of_3Imax2(It);
+	SumI100R =SumI100R + RunningAverageI2(It_m);
+	SumI100RCounter ++;
+	if (SumI100RCounter >= NUM_READ)
 	{
-		Current_load = SumI2/NUM_READ;
-		SumI2Counter = 0;
-		SumI2 = 0;
+		Current_100R = SumI100R/NUM_READ;
+		SumI100RCounter = 0;
+		SumI100R = 0;
 	}
-	if ((GPIOB->IDR & 0x02)==0x02)//if load on
+
+
+	It= (RegularConvData[3] * CalibrationData.CalibrationForCurrent_10R) / RegularConvData[7] ;//  Current A/10
+	It_m = It;//middle_of_3Imax2(It);
+	SumI10R =SumI10R + RunningAverageU2(It_m);
+	SumI10RCounter ++;
+	if (SumI10RCounter >= NUM_READ)
 	{
-		Current =(int32_t)(Current_load-CalibrationData.Calibration0ValueForCurrent1)*(-1) ;//2745;
-	}else
-	{
-		Current = (Current_Out-CalibrationData.Calibration0ValueForCurrent)/1 ;//2745;
+		Current_10R = SumI10R/NUM_READ;
+		SumI10RCounter = 0;
+		SumI10R = 0;
 	}
-	if (SumU2Counter >= NUM_READ)
+
+	It= (RegularConvData[4] * CalibrationData.CalibrationForCurrent_1R) / RegularConvData[7] ;//  Current A/10
+	It_m = It;//middle_of_3Imax2(It);
+	SumI1R =SumI1R + RunningAverageU3(It_m);
+	SumI1RCounter ++;
+	if (SumI1RCounter >= NUM_READ)
 	{
-
-		U_OUTtmp = SumU2/NUM_READ;
-		SumU2 = 0;
-		SumU2Counter = 0;
-
-		U_OUT_ForSetResistance = U_OUTtmp;
-		if (U_OUTtmp<3) U_OUTtmp = 0;
-
-		if (Current>=0)
-		{
-			U_OUTtmp = U_OUTtmp - (int32_t)CalibrationData.ResistanceComp_Ishunt_Wires*Current/10000;
-		}
-		else
-		{
-			U_OUTtmp = U_OUTtmp - (int32_t)CalibrationData.ResistanceComp_Ishunt_Wires*Current/10000;
-		}
-		if (U_OUTtmp<3)
-			U_OUTtmp=0;
-		U_OUT = U_OUTtmp;
+		Current_1R = SumI1R/NUM_READ;
+		SumI1RCounter = 0;
+		SumI1R = 0;
 	}
+
+
+	if (Current_1k < 100) Current = Current_1k;
+	else if (Current_100R < 1000) Current = Current_100R;
+	else if (Current_10R < 1000) Current = 10*Current_10R;
+	else Current = 1000*Current_1R;
+
+
 	 //LL_DMA_EnableChannel(DMA1,LL_DMA_CHANNEL_1);
 }
 
@@ -2480,13 +2478,13 @@ int main(void)
 	else if (Menu_GetCurrentMenu() == &Menu_11_1)
 		MenuLog(Button);
 	else if (Menu_GetCurrentMenu() == &Menu_10_2_1)
-		MenuCalibration_CURRENT_Load_to_0(Button);
+		MenuCalibration_CURRENT_100R(Button);
 	else if (Menu_GetCurrentMenu() == &Menu_10_1_1)
-		MenuCalibration_CURRENT_Out_to_0(Button);
+		MenuCalibration_CURRENT_1k(Button);
 	else if (Menu_GetCurrentMenu() == &Menu_10_4_1)
-		MenuCalibration_CURRENT_Load(Button);
+		MenuCalibration_CURRENT_1R(Button);
 	else if (Menu_GetCurrentMenu() == &Menu_10_3_1)
-		MenuCalibration_CURRENT_Out(Button);
+		MenuCalibration_CURRENT_10R(Button);
 	else if (Menu_GetCurrentMenu() == &Menu_10_7_1)
 		MenuCalibration_VoltageIn(Button);
 	else if (Menu_GetCurrentMenu() == &Menu_10_6_1)
