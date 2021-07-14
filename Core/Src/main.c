@@ -67,7 +67,7 @@ static void MX_ADC1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-char Version[] = "PSL1401mkA v2.00";
+char Version[] = "PSL1401mkA v2.01";
 
 Key_Pressed_t pressedKey = 0;
 volatile uint32_t  time_sec = 0;
@@ -2026,7 +2026,7 @@ void ClockOnLCD_noSec (uint32_t time)
 void All_OUT_OFF_When_Power_OFF()
 {
 	static uint8_t EEpromWrite_status = 1;
-	if (1)
+	if (!LL_GPIO_IsInputPinSet(GPIOA,LL_GPIO_PIN_6))
 	{
 		OFF();
 		if (EEpromWrite_status == 0)
@@ -2196,13 +2196,17 @@ void SysTick_Callback()//1 mc
 		Count10mSecond = 0;
 		//f1 = SysTick->VAL;
 		adc_func();
-		//All_OUT_OFF_When_Power_OFF();
+		All_OUT_OFF_When_Power_OFF();
 		//f2 = SysTick->VAL;
 	}
 
 	if (Count100mSecond >= 100)
 	{
 		Count100mSecond = 0;
+
+		if (U_PS > 350)	GPIOB->BSRR =  GPIO_BSRR_BS0;//Relay ON
+		if (U_PS < 340)	GPIOB->BSRR =  GPIO_BSRR_BR0;//Relay OFF
+
 	}
 
 	if (Count1000mSecond >= 1000)
@@ -2364,6 +2368,7 @@ int main(void)
   SystemCoreClockUpdate();
   SysTick_Config(SystemCoreClock/1000);//SystemCoreClock/1000 - 1mc
 	GPIOA->BSRR =  GPIO_BSRR_BS15;//Led on Board ON
+	//GPIOB->BSRR =  GPIO_BSRR_BS0;//Relay ON
 	OFF();
 	LoggingData.RecordsQuantity= 0;
 	uint8_t EEpromReadStatus;
@@ -2432,6 +2437,7 @@ int main(void)
 	  //logDebugD("f1 ",f1,0);
 	 // logDebugD("f2 ",f2,0);
 	  //logDebugD("f1-f2 ",f1-f2,0);
+	  logDebugD("AC:",LL_GPIO_IsInputPinSet(GPIOA,LL_GPIO_PIN_6),0);
   	Blink_message_counter++;
     Key_Pressed_t Button;
   	Button=BUT_GetKey();
@@ -2585,23 +2591,18 @@ static void MX_ADC1_Init(void)
   LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_ADC1);
 
   LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_GPIOA);
-  LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_GPIOB);
   /**ADC1 GPIO Configuration
   PA1   ------> ADC1_IN1
   PA2   ------> ADC1_IN2
   PA3   ------> ADC1_IN3
   PA4   ------> ADC1_IN4
   PA5   ------> ADC1_IN5
-  PB0   ------> ADC1_IN8
+  PA7   ------> ADC1_IN7
   */
   GPIO_InitStruct.Pin = LL_GPIO_PIN_1|LL_GPIO_PIN_2|LL_GPIO_PIN_3|LL_GPIO_PIN_4
-                          |LL_GPIO_PIN_5;
+                          |LL_GPIO_PIN_5|LL_GPIO_PIN_7;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_ANALOG;
   LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  GPIO_InitStruct.Pin = LL_GPIO_PIN_0;
-  GPIO_InitStruct.Mode = LL_GPIO_MODE_ANALOG;
-  LL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* ADC1 DMA Init */
 
@@ -2669,8 +2670,8 @@ static void MX_ADC1_Init(void)
   LL_ADC_SetChannelSamplingTime(ADC1, LL_ADC_CHANNEL_5, LL_ADC_SAMPLINGTIME_239CYCLES_5);
   /** Configure Regular Channel
   */
-  LL_ADC_REG_SetSequencerRanks(ADC1, LL_ADC_REG_RANK_6, LL_ADC_CHANNEL_8);
-  LL_ADC_SetChannelSamplingTime(ADC1, LL_ADC_CHANNEL_8, LL_ADC_SAMPLINGTIME_239CYCLES_5);
+  LL_ADC_REG_SetSequencerRanks(ADC1, LL_ADC_REG_RANK_6, LL_ADC_CHANNEL_7);
+  LL_ADC_SetChannelSamplingTime(ADC1, LL_ADC_CHANNEL_7, LL_ADC_SAMPLINGTIME_239CYCLES_5);
   /** Configure Regular Channel
   */
   LL_ADC_REG_SetSequencerRanks(ADC1, LL_ADC_REG_RANK_7, LL_ADC_CHANNEL_TEMPSENSOR);
@@ -2783,14 +2784,20 @@ static void MX_GPIO_Init(void)
   LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_GPIOB);
 
   /**/
-  LL_GPIO_ResetOutputPin(GPIOB, LL_GPIO_PIN_1|LL_GPIO_PIN_10|LL_GPIO_PIN_11|LL_GPIO_PIN_12
-                          |LL_GPIO_PIN_13|LL_GPIO_PIN_14|LL_GPIO_PIN_15);
+  LL_GPIO_ResetOutputPin(GPIOB, LL_GPIO_PIN_0|LL_GPIO_PIN_1|LL_GPIO_PIN_10|LL_GPIO_PIN_11
+                          |LL_GPIO_PIN_12|LL_GPIO_PIN_13|LL_GPIO_PIN_14|LL_GPIO_PIN_15);
 
   /**/
   LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_8|LL_GPIO_PIN_11|LL_GPIO_PIN_15);
 
   /**/
-  GPIO_InitStruct.Pin = LL_GPIO_PIN_1;
+  GPIO_InitStruct.Pin = LL_GPIO_PIN_6;
+  GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = LL_GPIO_PULL_DOWN;
+  LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /**/
+  GPIO_InitStruct.Pin = LL_GPIO_PIN_0|LL_GPIO_PIN_1;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
   GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
   GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
